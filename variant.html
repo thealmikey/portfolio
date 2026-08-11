@@ -82,7 +82,9 @@
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--accent);
-    transition: transform 250ms ease, box-shadow 250ms ease;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 400ms ease, transform 400ms ease, box-shadow 250ms ease;
   }
   .nav-brand:hover .nav-portrait {
     transform: scale(1.08);
@@ -96,6 +98,9 @@
     text-transform: uppercase;
     white-space: nowrap;
     line-height: 1.2;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 400ms ease 50ms, transform 400ms ease 50ms;
   }
   .nav-links {
     display: flex;
@@ -114,6 +119,14 @@
   }
   nav.scrolled .nav-links a {
     opacity: 1;
+  }
+  nav.nav-show-brand .nav-portrait {
+    opacity: 1;
+    transform: scale(1);
+  }
+  nav.nav-show-brand .nav-name {
+    opacity: 1;
+    transform: translateY(0);
   }
   .nav-links a::after {
     content: '';
@@ -4170,6 +4183,10 @@ footer {
 
     // Main nav background
     nav.classList.toggle('scrolled', scrollY > 60);
+
+    // Show nav portrait when hero headshot is no longer in view
+    const heroScrolledPast = heroBottom < window.innerHeight * 0.5;
+    nav.classList.toggle('nav-show-brand', heroScrolledPast);
 
     // Compact header: show when scrolled past hero midpoint
     if (heroBottom < heroHeight * 0.5) {
