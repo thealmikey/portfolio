@@ -1096,6 +1096,43 @@ footer {
   gap: 1rem;
   color: var(--accent);
 }
+/* ── Schedule ── */
+.schedule {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem 0;
+}
+.schedule-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.schedule-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 2.2rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.schedule-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
 /* ── Reveal Animation ── */
   .reveal {
     opacity: 0;
@@ -2012,7 +2049,32 @@ footer {
   [data-variant="strategist"] .outcome-cta {
     color: var(--bg);
     border-bottom-color: var(--bg);
-  }  [data-variant="revenue"] {
+  }
+  [data-variant="strategist"] .schedule {
+    padding: 4rem 0;
+  }
+  [data-variant="strategist"] .schedule-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+  [data-variant="strategist"] .schedule-btn {
+    border: none;
+    border-bottom: 1px solid var(--text);
+    border-radius: 0;
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 0.5rem 0;
+  }
+  [data-variant="strategist"] .schedule-btn:hover {
+    background: transparent;
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
     --bg: #0a0a0a;
     --bg-alt: #111111;
     --text: #ffffff;
@@ -3672,6 +3734,14 @@ footer {
     transition: gap 300ms ease, color 300ms ease;
   }
   [data-variant="elegance"] .outcome-cta:hover {
+  [data-variant="elegance"] .schedule-text {
+    color: var(--text-secondary);
+  }
+  [data-variant="elegance"] .schedule-btn:hover {
+    background: var(--accent);
+    color: #0f0f0f;
+    border-color: var(--accent);
+  }
     color: var(--accent-strong);
     gap: 1rem;
   }
@@ -4041,6 +4111,14 @@ footer {
     border-bottom-color: #000;
   }
   [data-variant="revenue"] .outcome-cta:hover {
+  [data-variant="revenue"] .schedule-text {
+    color: var(--text-secondary);
+  }
+  [data-variant="revenue"] .schedule-btn:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
     color: #000;
   }
 
@@ -4100,6 +4178,14 @@ footer {
     color: var(--bg);
   }
   [data-variant="bridge"] .outcome p {
+  [data-variant="bridge"] .schedule-text {
+    color: var(--text-secondary);
+  }
+  [data-variant="bridge"] .schedule-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
     color: var(--text-secondary);
   }
 
@@ -4154,6 +4240,14 @@ footer {
     color: rgba(255,255,255,0.9);
   }
   [data-variant="healthcare"] .outcome-cta {
+  [data-variant="healthcare"] .schedule-text {
+    color: var(--text-secondary);
+  }
+  [data-variant="healthcare"] .schedule-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
     color: #fff;
     border-bottom-color: #fff;
   }
@@ -4223,6 +4317,14 @@ footer {
     color: var(--bg);
   }
   [data-variant="global"] .outcome p {
+  [data-variant="global"] .schedule-text {
+    color: var(--text-secondary);
+  }
+  [data-variant="global"] .schedule-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
     color: var(--text-secondary);
   }
 
@@ -4269,6 +4371,14 @@ footer {
     color: rgba(255,255,255,0.9);
   }
   [data-variant="venture"] .outcome-cta {
+  [data-variant="venture"] .schedule-text {
+    color: var(--text-secondary);
+  }
+  [data-variant="venture"] .schedule-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
     color: #fff;
     border-bottom-color: #fff;
   }
@@ -4316,8 +4426,58 @@ footer {
     color: rgba(250,250,248,0.7);
   }
   [data-variant="strategist"] .outcome-cta {
+  [data-variant="strategist"] .schedule {
+    padding: 4rem 0;
+  }
+  [data-variant="strategist"] .schedule-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+  [data-variant="strategist"] .schedule-btn {
+    border: none;
+    border-bottom: 1px solid var(--text);
+    border-radius: 0;
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 0.5rem 0;
+  }
+  [data-variant="strategist"] .schedule-btn:hover {
+    background: transparent;
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
     color: var(--bg);
     border-bottom-color: var(--bg);
+  }
+  [data-variant="strategist"] .schedule {
+    padding: 4rem 0;
+  }
+  [data-variant="strategist"] .schedule-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+  [data-variant="strategist"] .schedule-btn {
+    border: none;
+    border-bottom: 1px solid var(--text);
+    border-radius: 0;
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 0.5rem 0;
+  }
+  [data-variant="strategist"] .schedule-btn:hover {
+    background: transparent;
+    color: var(--accent);
+    border-bottom-color: var(--accent);
   }
 
 </style>
@@ -4850,6 +5010,21 @@ footer {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" data-section="schedule">
+    <span class="section-label reveal">Schedule</span>
+    <div class="schedule reveal">
+      <p class="schedule-text">Available for select advisory and operational partnerships.</p>
+      <button 
+        data-cal-link="beverly-nasimiyu/30min" 
+        data-cal-config='{"layout":"month_view"}'
+        class="schedule-btn">
+        Book a 30-minute call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
 </section>
 
 <!-- EDUCATION -->
@@ -5076,6 +5251,7 @@ footer {
       services: document.querySelector('[data-section="services"]'),
       education: document.querySelector('[data-section="education"]'),
       languages: document.querySelector('[data-section="languages"]'),
+      schedule: document.querySelector('[data-section="schedule"]'),
       contact: document.querySelector('[data-section="contact"]'),
     };
 
@@ -5137,6 +5313,9 @@ footer {
   };
 
 })();
+</script>
+<script>
+  (function(){var s=document.createElement("script");s.src="https://app.cal.com/embed/embed.js";s.async=true;document.head.appendChild(s);})();
 </script>
 
 </body>

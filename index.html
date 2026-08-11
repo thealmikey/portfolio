@@ -1063,6 +1063,43 @@ footer {
   gap: 1rem;
   color: var(--accent);
 }
+/* ── Schedule ── */
+.schedule {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem 0;
+}
+.schedule-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.schedule-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 2.2rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.schedule-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
 /* ── Reveal Animation ── */
   .reveal {
     opacity: 0;
@@ -1649,6 +1686,21 @@ footer {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" data-section="schedule">
+    <span class="section-label reveal">Schedule</span>
+    <div class="schedule reveal">
+      <p class="schedule-text">Available for select advisory and operational partnerships.</p>
+      <button 
+        data-cal-link="beverly-nasimiyu/30min" 
+        data-cal-config='{"layout":"month_view"}'
+        class="schedule-btn">
+        Book a 30-minute call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
 </section>
 
 <!-- EDUCATION -->
@@ -1836,6 +1888,9 @@ footer {
     });
   });
 })();
+</script>
+<script>
+  (function(){var s=document.createElement("script");s.src="https://app.cal.com/embed/embed.js";s.async=true;document.head.appendChild(s);})();
 </script>
 </body>
 </html>
