@@ -53,9 +53,9 @@
     top: 0; left: 0; right: 0;
     z-index: 100;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding: 1.25rem var(--pad-x);
+    padding: 1rem var(--pad-x);
     transition: background 300ms ease, box-shadow 300ms ease, top 300ms ease;
   }
   nav.header-hidden {
@@ -68,23 +68,35 @@
     box-shadow: 0 1px 0 var(--border);
   }
   .nav-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+  }
+  .nav-portrait {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+  }
+  .nav-brand:hover .nav-portrait {
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .nav-name {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.02em;
-    position: relative;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1.2;
   }
-  .nav-brand::after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: -2px;
-    width: 100%; height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 300ms ease;
-  }
-  .nav-brand:hover::after { transform: scaleX(1); }
   .nav-links {
     display: flex;
     gap: 2rem;
@@ -281,13 +293,6 @@
     max-width: var(--max-width);
     width: 100%;
     margin: 0 auto;
-  }
-  .compact-portrait {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--accent);
-    flex-shrink: 0;
   }
   .compact-name {
     font-family: var(--font-display);
@@ -1184,6 +1189,7 @@ footer {
     }
     .nav-links.open { right: 0; }
     .nav-toggle { display: block; }
+    .nav-brand { display: none; }
     .hero { min-height: 90vh; }
     .scroll-indicator { display: none; }
     .experience-grid {
@@ -3153,6 +3159,7 @@ footer {
     }
     .nav-links.open { right: 0; }
     .nav-toggle { display: block; }
+    .nav-brand { display: none; }
     .hero { min-height: 90vh; }
     .scroll-indicator { display: none; }
     .experience-grid {
@@ -3564,6 +3571,10 @@ footer {
 
 
 <nav id="nav">
+  <div class="nav-brand">
+    <img src="headshot.jpg" alt="Beverly Nasimiyu" class="nav-portrait">
+    <span class="nav-name">Beverly Nasimiyu</span>
+  </div>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -3594,7 +3605,6 @@ footer {
 <!-- COMPACT HEADER (appears on scroll) -->
 <header class="compact-header" id="compactHeader">
   <div class="compact-header-inner">
-    <img src="headshot.jpg" alt="Beverly Nasimiyu" class="compact-portrait">
     <span class="compact-name">Beverly Nasimiyu</span>
     <nav class="compact-nav">
       <a href="#about" title="About" aria-label="About">
