@@ -1147,6 +1147,20 @@ footer {
     .service-body-inner { grid-template-columns: 1fr; gap: 2rem; padding-left: 60px; }
     .engagement-grid { grid-template-columns: 1fr; }
   }
+  @media (max-width: 860px) {
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .experience-dates {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .experience-dates .date-range { margin-bottom: 0; }
+  }
   @media (max-width: 768px) {
     .nav-links {
       position: fixed;
@@ -3101,6 +3115,20 @@ footer {
     .service-header { grid-template-columns: 60px 1fr; gap: 1.5rem; }
     .service-body-inner { grid-template-columns: 1fr; gap: 2rem; padding-left: 60px; }
     .engagement-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 860px) {
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .experience-dates {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .experience-dates .date-range { margin-bottom: 0; }
   }
   @media (max-width: 768px) {
     .nav-links {
