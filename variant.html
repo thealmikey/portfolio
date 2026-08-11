@@ -36,6 +36,7 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.65;
+    padding-bottom: 56px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image: 
@@ -1202,39 +1203,51 @@ footer {
   }
 
   /* ══════════════════════════════════════════
-     VARIANT SELECTOR
+     VARIANT EXPLORER TOOLBAR
      ══════════════════════════════════════════ */
-  .variant-selector {
+  .variant-toolbar {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 200;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 0.7rem var(--pad-x);
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    max-width: 500px;
+    backdrop-filter: blur(8px);
+  }
+  .variant-toolbar-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-right: 0.75rem;
+    white-space: nowrap;
   }
   .variant-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.35rem 0.7rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
-    background: var(--bg);
+    border-radius: 3px;
+    background: transparent;
     color: var(--text-secondary);
     font-family: var(--font-body);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 200ms ease;
+    transition: all 180ms ease;
     white-space: nowrap;
-    backdrop-filter: blur(8px);
   }
   .variant-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
-    transform: translateY(-2px);
   }
   .variant-btn.active {
     background: var(--accent);
@@ -1583,6 +1596,33 @@ footer {
   }
 
   /* ══════════════════════════════════════════
+     VARIANT TOOLBAR OVERRIDES
+     ══════════════════════════════════════════ */
+  [data-variant="revenue"] .variant-toolbar {
+    background: #0a0a0a;
+    border-top-color: #333;
+  }
+  [data-variant="revenue"] .variant-toolbar-label {
+    color: #888;
+  }
+  [data-variant="bridge"] .variant-toolbar {
+    background: #f8fafc;
+    border-top-color: #cbd5e1;
+  }
+  [data-variant="healthcare"] .variant-toolbar {
+    background: #ffffff;
+    border-top-color: #d1d5db;
+  }
+  [data-variant="global"] .variant-toolbar {
+    background: #fdfcfb;
+    border-top-color: #e0dcd6;
+  }
+  [data-variant="venture"] .variant-toolbar {
+    background: #faf8f5;
+    border-top-color: #e5e0d8;
+  }
+
+  /* ══════════════════════════════════════════
      RESPONSIVE
      ══════════════════════════════════════════ */
   @media (max-width: 1024px) {
@@ -1646,13 +1686,19 @@ footer {
     .build-options { grid-template-columns: 1fr; }
     .engagement-grid { grid-template-columns: 1fr; }
     .outcome { padding: 2.5rem 1.5rem; }
-    .variant-selector {
-      top: auto;
-      bottom: 1rem;
-      right: 1rem;
-      left: 1rem;
-      max-width: none;
-      justify-content: center;
+    .variant-toolbar {
+      padding: 0.5rem var(--pad-x);
+      gap: 0.35rem;
+    }
+    .variant-toolbar-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      margin-right: 0.5rem;
+    }
+    .variant-btn {
+      padding: 0.3rem 0.55rem;
+      font-size: 0.55rem;
+      letter-spacing: 0.04em;
     }
   }
 
@@ -2000,15 +2046,16 @@ footer {
 </head>
 <body>
 
-  <!-- VARIANT SELECTOR -->
-  <div class="variant-selector">
-    <button class="variant-btn active" data-variant="default">Default</button>
-    <button class="variant-btn" data-variant="strategist">Strategist</button>
-    <button class="variant-btn" data-variant="revenue">Revenue</button>
-    <button class="variant-btn" data-variant="bridge">Bridge</button>
-    <button class="variant-btn" data-variant="healthcare">Healthcare</button>
-    <button class="variant-btn" data-variant="global">Global</button>
-    <button class="variant-btn" data-variant="venture">Venture</button>
+  <!-- VARIANT EXPLORER TOOLBAR -->
+  <div class="variant-toolbar" role="toolbar" aria-label="Portfolio variant explorer">
+    <span class="variant-toolbar-label">Explore</span>
+    <button class="variant-btn active" data-variant="default" aria-pressed="true">Default</button>
+    <button class="variant-btn" data-variant="strategist" aria-pressed="false">Strategist</button>
+    <button class="variant-btn" data-variant="revenue" aria-pressed="false">Revenue</button>
+    <button class="variant-btn" data-variant="bridge" aria-pressed="false">Bridge</button>
+    <button class="variant-btn" data-variant="healthcare" aria-pressed="false">Healthcare</button>
+    <button class="variant-btn" data-variant="global" aria-pressed="false">Global</button>
+    <button class="variant-btn" data-variant="venture" aria-pressed="false">Venture</button>
   </div>
 
 
@@ -2738,158 +2785,6 @@ footer {
       }
     });
   });
-})();
-</script>
-
-
-<script>
-(function() {
-  'use strict';
-
-  const html = document.documentElement;
-  const buttons = document.querySelectorAll('.variant-btn');
-
-  function setVariant(variant) {
-    html.setAttribute('data-variant', variant);
-    buttons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.variant === variant);
-    });
-    try {
-      localStorage.setItem('portfolio-variant', variant);
-    } catch(e) {}
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      setVariant(btn.dataset.variant);
-    });
-  });
-
-  let saved = 'default';
-  try {
-    saved = localStorage.getItem('portfolio-variant') || 'default';
-  } catch(e) {}
-  setVariant(saved);
-
-  const nav = document.getElementById('nav');
-  const toggle = document.getElementById('navToggle');
-  const links = document.getElementById('navLinks');
-  const heroContent = document.getElementById('heroContent');
-  const compactHeader = document.getElementById('compactHeader');
-  const hero = document.getElementById('hero');
-
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
-    const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
-    if (heroBottom < heroHeight * 0.5) {
-      compactHeader.classList.add('visible');
-      nav.classList.add('header-hidden');
-    } else {
-      compactHeader.classList.remove('visible');
-      nav.classList.remove('header-hidden');
-    }
-    if (heroContent && hero) {
-      const rect = hero.getBoundingClientRect();
-      const scrollProgress = Math.min(Math.max(-rect.top / heroHeight, 0), 1);
-      const eased = 1 - Math.pow(1 - scrollProgress, 3);
-      const scale = 1 - eased * 0.25;
-      const translateX = eased * -30;
-      const translateY = eased * -40;
-      const opacity = 1 - eased * 0.3;
-      heroContent.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      heroContent.style.opacity = opacity;
-    }
-  });
-
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
-    links.classList.toggle('open');
-  });
-  links.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.classList.remove('open');
-      links.classList.remove('open');
-    });
-  });
-
-  const reveals = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => revealObserver.observe(el));
-
-  const metrics = document.querySelectorAll('.metric-value[data-target]');
-  let metricsCounted = false;
-  function animateMetrics() {
-    if (metricsCounted) return;
-    const band = document.querySelector('.metrics-band');
-    const rect = band.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
-      metricsCounted = true;
-      metrics.forEach(el => {
-        const target = parseInt(el.dataset.target, 10);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1200;
-        const start = performance.now();
-        function update(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.round(eased * target);
-          el.textContent = current + suffix;
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-      });
-    }
-  }
-  window.addEventListener('scroll', animateMetrics, { passive: true });
-  animateMetrics();
-
-  const sections = document.querySelectorAll('section[id], footer[id]');
-  const navAnchors = document.querySelectorAll('.nav-links a');
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navAnchors.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
-  sections.forEach(s => sectionObserver.observe(s));
-
-  const serviceItems = document.querySelectorAll('.service-item');
-  serviceItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const wasExpanded = item.classList.contains('expanded');
-      serviceItems.forEach(i => i.classList.remove('expanded'));
-      if (!wasExpanded) {
-        item.classList.add('expanded');
-      }
-    });
-  });
-
-  const buildOptions = document.querySelectorAll('.build-option');
-  buildOptions.forEach(opt => {
-    opt.addEventListener('click', () => {
-      opt.classList.toggle('selected');
-      if (opt.classList.contains('selected')) {
-        opt.style.borderColor = 'var(--accent)';
-        opt.style.background = 'var(--accent-light)';
-      } else {
-        opt.style.borderColor = '';
-        opt.style.background = '';
-      }
-    });
-  });
-})();
 </script>
 
 <script>
@@ -2899,7 +2794,11 @@ footer {
   const variantBtns = document.querySelectorAll('.variant-btn');
   function setVariant(variant) {
     html.setAttribute('data-variant', variant);
-    variantBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.variant === variant));
+    variantBtns.forEach(btn => {
+      const isActive = btn.dataset.variant === variant;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
     try { localStorage.setItem('portfolio-variant', variant); } catch(e) {}
   }
   variantBtns.forEach(btn => {
