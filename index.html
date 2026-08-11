@@ -729,7 +729,312 @@ footer {
   text-transform: uppercase;
 }
 
-/* ── Persistent Contact Bar ── */
+/* ── Services ── */
+.services-section {
+  padding: var(--pad-y) var(--pad-x);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.services-header {
+  margin-bottom: 4rem;
+}
+.services-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.services-intro {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 720px;
+}
+.service-item {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+  cursor: pointer;
+  transition: background 300ms ease;
+}
+.service-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.service-item:hover {
+  background: var(--accent-light);
+}
+.service-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  align-items: baseline;
+}
+.service-number {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.service-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.service-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.25;
+  transition: color 200ms ease;
+}
+.service-item:hover .service-title {
+  color: var(--accent);
+}
+.service-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 640px;
+}
+.service-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms ease, opacity 300ms ease;
+  opacity: 0;
+}
+.service-item.expanded .service-body {
+  max-height: 600px;
+  opacity: 1;
+}
+.service-body-inner {
+  padding-top: 1.5rem;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.service-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.service-includes-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.service-includes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.service-includes li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.service-includes li::before {
+  content: '—';
+  position: absolute;
+  left: 0; top: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.service-best-for {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  padding-top: 0.25rem;
+}
+.service-best-for strong {
+  color: var(--text);
+  font-weight: 600;
+  font-style: normal;
+}
+.service-toggle-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  margin-left: 1rem;
+  vertical-align: middle;
+  transition: transform 300ms ease;
+}
+.service-item.expanded .service-toggle-icon {
+  transform: rotate(45deg);
+}
+.service-toggle-icon::before,
+.service-toggle-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--accent);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.service-toggle-icon::before {
+  width: 12px; height: 2px;
+}
+.service-toggle-icon::after {
+  width: 2px; height: 12px;
+}
+
+/* ── Build Your Own ── */
+.build-your-own {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border);
+}
+.build-your-own h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.build-your-own-intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin-bottom: 3rem;
+}
+.build-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.build-option {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 250ms ease, transform 250ms ease, background 250ms ease;
+  background: transparent;
+}
+.build-option:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  background: var(--accent-light);
+}
+.build-option-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.build-option-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+.build-outcome-cta {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 720px;
+  font-style: italic;
+}
+
+/* ── Engagement Models ── */
+.engagement-models {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border);
+}
+.engagement-models h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+.engagement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.engagement-card {
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 250ms ease, transform 250ms ease;
+}
+.engagement-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.engagement-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.engagement-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+.engagement-best {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+.engagement-best strong {
+  color: var(--text);
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* ── Outcome ── */
+.outcome {
+  margin-top: 6rem;
+  padding: 4rem;
+  background: var(--bg-alt);
+  border-radius: 8px;
+  text-align: center;
+}
+.outcome h4 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.outcome p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+.outcome-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.25rem;
+  transition: gap 200ms ease;
+}
+.outcome-cta:hover {
+  gap: 1rem;
+}
 .contact-bar {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -790,6 +1095,9 @@ body.contact-visible {
     .metrics-inner { gap: 2.5rem; }
     .experience-grid { grid-template-columns: 160px 1fr; gap: 3rem; }
     .experience-dates { top: 5rem; }
+    .service-header { grid-template-columns: 60px 1fr; gap: 1.5rem; }
+    .service-body-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .engagement-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
     .nav-links {
@@ -827,11 +1135,17 @@ body.contact-visible {
     }
     .role::before { display: none; }
     .role:hover { transform: none; background: none; }
-    .metrics-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .metrics-inner { gap: 2rem; }
     .metric { grid-template-columns: 1fr; gap: 0.75rem; }
     .metric-value { font-size: clamp(1.8rem, 5vw, 2.5rem); }
     section { padding-top: var(--pad-y); }
     .summary-points { grid-template-columns: 1fr; }
+    .service-header { grid-template-columns: 1fr; gap: 0.75rem; }
+    .service-body-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .service-item { padding: 2rem 0; }
+    .build-options { grid-template-columns: 1fr; }
+    .engagement-grid { grid-template-columns: 1fr; }
+    .outcome { padding: 2.5rem 1.5rem; }
   }
 </style>
 </head>
@@ -842,7 +1156,8 @@ body.contact-visible {
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#competencies">Expertise</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -1017,7 +1332,7 @@ body.contact-visible {
 <hr class="divider">
 
 <!-- COMPETENCIES -->
-<section id="competencies" class="competencies">
+<section id="expertise" class="competencies">
   <span class="section-label reveal">Expertise</span>
   <div class="competencies-list reveal">
     <span class="competency">Business Operations</span>
@@ -1055,6 +1370,247 @@ body.contact-visible {
 </section>
 
 <hr class="divider">
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="services-header reveal">
+    <h2>Work With Beverly</h2>
+    <p class="services-intro">Practical expertise. Packaged around the problems businesses actually need solved. I help businesses bring structure to operations, improve customer and revenue processes, make better use of their data, and build systems that help teams move faster. Whether you need a focused operational fix, better reporting, stronger customer processes, or ongoing business support, we can shape the engagement around what your business needs.</p>
+  </div>
+
+  <div class="services-list">
+    <article class="service-item reveal" data-service="1">
+      <div class="service-header">
+        <span class="service-number">01</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Operations &amp; Process <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Bring structure to a business that's getting harder to manage.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Process and workflow review</li>
+              <li>SOP development and standardization</li>
+              <li>Operational documentation</li>
+              <li>Workflow improvement</li>
+              <li>Cross-functional process alignment</li>
+              <li>KPI and accountability frameworks</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Businesses that have grown quickly and need their operations to catch up.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="2">
+      <div class="service-header">
+        <span class="service-number">02</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Revenue Operations <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Make the journey from opportunity to close more organized, visible and efficient.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Sales and revenue workflow review</li>
+              <li>Deal process optimization</li>
+              <li>CPQ process review</li>
+              <li>Approval workflow improvement</li>
+              <li>Pipeline and KPI reporting</li>
+              <li>Sales-process documentation</li>
+              <li>Identification of operational bottlenecks</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Sales teams that need better processes, reporting and operational visibility.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="3">
+      <div class="service-header">
+        <span class="service-number">03</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Customer Success <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Build a more consistent journey from onboarding to renewal.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Customer onboarding process design</li>
+              <li>Renewal workflow review</li>
+              <li>Escalation process design</li>
+              <li>Customer-health KPI frameworks</li>
+              <li>Customer journey documentation</li>
+              <li>Cross-functional customer-success workflows</li>
+              <li>Retention and churn-risk processes</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Businesses looking to improve customer experience, retention and operational consistency.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="4">
+      <div class="service-header">
+        <span class="service-number">04</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Data &amp; Business Reporting <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Turn scattered business information into reporting leaders can actually use.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>KPI identification</li>
+              <li>Operational reporting</li>
+              <li>Dashboard structure</li>
+              <li>Excel / Google Sheets reporting</li>
+              <li>Tableau reporting support</li>
+              <li>Business-performance tracking</li>
+              <li>Data-backed recommendations</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams spending too much time collecting information and not enough time using it.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="5">
+      <div class="service-header">
+        <span class="service-number">05</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Automation &amp; Workflow <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Find the repetitive work, simplify it, and build a better way of working.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Workflow mapping</li>
+              <li>Process automation opportunities</li>
+              <li>Data-flow improvement</li>
+              <li>SOP optimization</li>
+              <li>AI-assisted workflow opportunities</li>
+              <li>Operational efficiency review</li>
+              <li>Automation recommendations</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams where repetitive processes are consuming time and creating avoidable errors.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="6">
+      <div class="service-header">
+        <span class="service-number">06</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Business / Executive Support <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Bring an experienced operator into the room when you need things to move.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Executive-ready reporting</li>
+              <li>Meeting preparation and follow-through</li>
+              <li>Cross-functional coordination</li>
+              <li>Project and program support</li>
+              <li>Stakeholder communication</li>
+              <li>Business reviews</li>
+              <li>Operational planning</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Founders, executives and growing teams that need additional operational horsepower without immediately building another full-time function.
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="build-your-own reveal">
+    <h3>Build Your Own Engagement</h3>
+    <p class="build-your-own-intro">Not every business needs a package. Your challenge might sit across several areas. We can combine capabilities to create an engagement around your specific situation.</p>
+    <div class="build-options">
+      <div class="build-option" data-option="operations">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Operations</div>
+      </div>
+      <div class="build-option" data-option="revenue">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Revenue</div>
+      </div>
+      <div class="build-option" data-option="customer-success">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Customer Success</div>
+      </div>
+      <div class="build-option" data-option="data">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Data</div>
+      </div>
+      <div class="build-option" data-option="automation">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Automation</div>
+      </div>
+    </div>
+    <p class="build-outcome-cta">Tell me what isn't working. We'll work backwards from the outcome.</p>
+  </div>
+
+  <div class="engagement-models reveal">
+    <h3>How We Can Work Together</h3>
+    <div class="engagement-grid">
+      <div class="engagement-card">
+        <div class="engagement-title">Focused Sprint</div>
+        <div class="engagement-desc">A defined problem. A defined outcome.</div>
+        <div class="engagement-best"><strong>Best for:</strong> A process review, dashboard, workflow improvement, SOP development or operational challenge.</div>
+      </div>
+      <div class="engagement-card">
+        <div class="engagement-title">Project Engagement</div>
+        <div class="engagement-desc">A larger operational initiative with a clear beginning and end.</div>
+        <div class="engagement-best"><strong>Best for:</strong> Process redesign, customer-success improvements, revenue-operations initiatives or reporting projects.</div>
+      </div>
+      <div class="engagement-card">
+        <div class="engagement-title">Ongoing Partnership</div>
+        <div class="engagement-desc">Flexible operational support for businesses that need an experienced operator in their corner.</div>
+        <div class="engagement-best"><strong>Best for:</strong> Founders, growing businesses and teams that need continued support across operations, reporting, customer success or process improvement.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="outcome reveal">
+    <h4>The Outcome</h4>
+    <p>More clarity. Better processes. Better visibility. Less operational friction.</p>
+    <a href="#contact" class="outcome-cta">
+      Let's talk about what you're trying to improve
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
 
 <!-- EDUCATION -->
 <section id="education">
@@ -1248,6 +1804,33 @@ body.contact-visible {
   }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
 
   sections.forEach(s => sectionObserver.observe(s));
+
+  // ── Service item toggle ──
+  const serviceItems = document.querySelectorAll('.service-item');
+  serviceItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const wasExpanded = item.classList.contains('expanded');
+      serviceItems.forEach(i => i.classList.remove('expanded'));
+      if (!wasExpanded) {
+        item.classList.add('expanded');
+      }
+    });
+  });
+
+  // ── Build option selection ──
+  const buildOptions = document.querySelectorAll('.build-option');
+  buildOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opt.classList.toggle('selected');
+      if (opt.classList.contains('selected')) {
+        opt.style.borderColor = 'var(--accent)';
+        opt.style.background = 'var(--accent-light)';
+      } else {
+        opt.style.borderColor = '';
+        opt.style.background = '';
+      }
+    });
+  });
 })();
 </script>
 </body>
