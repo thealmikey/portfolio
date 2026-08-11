@@ -1250,10 +1250,16 @@ footer {
     padding: 0.7rem var(--pad-x);
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     backdrop-filter: blur(8px);
+  }
+  .variant-toolbar::-webkit-scrollbar {
+    display: none;
   }
   .variant-toolbar-label {
     font-size: 0.6rem;
@@ -1263,6 +1269,7 @@ footer {
     color: var(--text-light);
     margin-right: 0.75rem;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .variant-btn {
     padding: 0.35rem 0.7rem;
@@ -1278,6 +1285,7 @@ footer {
     cursor: pointer;
     transition: all 180ms ease;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .variant-btn:hover {
     border-color: var(--accent);
