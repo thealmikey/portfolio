@@ -2383,6 +2383,711 @@ footer {
   }
 
   /* ══════════════════════════════════════════
+
+  /* ══════════════════════════════════════════
+     VARIANT STRUCTURAL OVERRIDES
+     ══════════════════════════════════════════ */
+
+  /* ── STRATEGIST: Executive Brief ── */
+  [data-variant="strategist"] body {
+    background: #ffffff;
+  }
+  [data-variant="strategist"] .hero {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+    min-height: 60vh;
+  }
+  [data-variant="strategist"] .hero-content {
+    align-items: flex-start;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--pad-x);
+  }
+  [data-variant="strategist"] .hero-name {
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-align: left;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+  [data-variant="strategist"] .hero-statement {
+    display: none;
+  }
+  [data-variant="strategist"] .hero-portrait {
+    width: clamp(100px, 15vw, 160px);
+    height: clamp(100px, 15vw, 160px);
+    margin-bottom: 1.5rem;
+  }
+  [data-variant="strategist"] [data-section="metrics"] {
+    display: none;
+  }
+  [data-variant="strategist"] [data-section="services"] {
+    display: none;
+  }
+  [data-variant="strategist"] [data-section="education"] {
+    display: none;
+  }
+  [data-variant="strategist"] [data-section="languages"] {
+    display: none;
+  }
+  [data-variant="strategist"] .build-your-own {
+    display: none;
+  }
+  [data-variant="strategist"] .engagement-models {
+    display: none;
+  }
+  [data-variant="strategist"] .experience-dates {
+    display: none;
+  }
+  [data-variant="strategist"] .experience-entries {
+    border-left: none;
+    padding-left: 0;
+  }
+  [data-variant="strategist"] .role:nth-child(n+4) {
+    display: none;
+  }
+  [data-variant="strategist"] .role {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-left: 2px solid var(--border);
+  }
+  [data-variant="strategist"] .role::before {
+    display: none;
+  }
+  [data-variant="strategist"] .outcome {
+    background: var(--text);
+    color: var(--bg);
+    border-radius: 0;
+  }
+
+  /* ── REVENUE: Dashboard ── */
+  [data-variant="revenue"] body {
+    background: #0a0a0a;
+  }
+  [data-variant="revenue"] .hero {
+    text-align: center;
+    background: #0a0a0a;
+  }
+  [data-variant="revenue"] .hero-content {
+    max-width: 900px;
+  }
+  [data-variant="revenue"] .hero-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  [data-variant="revenue"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+  [data-variant="revenue"] .hero-statement {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  [data-variant="revenue"] .hero-statement::before,
+  [data-variant="revenue"] .hero-statement::after {
+    background: var(--text-secondary);
+    opacity: 0.3;
+  }
+  [data-variant="revenue"] [data-section="about"] {
+    display: none;
+  }
+  [data-variant="revenue"] [data-section="expertise"] {
+    display: none;
+  }
+  [data-variant="revenue"] [data-section="education"] {
+    display: none;
+  }
+  [data-variant="revenue"] [data-section="languages"] {
+    display: none;
+  }
+  [data-variant="revenue"] .metrics-band {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: calc(var(--pad-y) * 1.2) var(--pad-x);
+  }
+  [data-variant="revenue"] .metrics-inner {
+    max-width: 1000px;
+    gap: 3rem;
+  }
+  [data-variant="revenue"] .metric {
+    grid-template-columns: 140px 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  [data-variant="revenue"] .metric-value {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    color: var(--accent);
+  }
+  [data-variant="revenue"] .metric-label {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  [data-variant="revenue"] .metric-context {
+    color: var(--text-secondary);
+  }
+  [data-variant="revenue"] .experience-dates {
+    display: none;
+  }
+  [data-variant="revenue"] .experience-entries {
+    border-left: 1px solid var(--border);
+    padding-left: 2rem;
+  }
+  [data-variant="revenue"] .role {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 4px;
+  }
+  [data-variant="revenue"] .role:hover {
+    background: rgba(245, 158, 11, 0.08);
+  }
+  [data-variant="revenue"] .role::before {
+    background: var(--accent);
+  }
+  [data-variant="revenue"] .service-item {
+    border-top-color: var(--border);
+    padding: 2rem 0;
+  }
+  [data-variant="revenue"] .service-header {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  [data-variant="revenue"] .service-number {
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+  [data-variant="revenue"] .service-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  [data-variant="revenue"] .outcome {
+    background: var(--accent);
+    color: #000;
+    border-radius: 4px;
+  }
+  [data-variant="revenue"] .outcome p {
+    color: rgba(0,0,0,0.8);
+  }
+  [data-variant="revenue"] .outcome-cta {
+    color: #000;
+    border-bottom-color: #000;
+  }
+  [data-variant="revenue"] .outcome-cta:hover {
+    color: #000;
+  }
+  [data-variant="revenue"] .engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  [data-variant="revenue"] .engagement-card {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+  [data-variant="revenue"] .engagement-card::before {
+    background: var(--accent);
+  }
+
+  /* ── BRIDGE: System Map ── */
+  [data-variant="bridge"] body {
+    background: #f8fafc;
+  }
+  [data-variant="bridge"] .hero {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+    background: #f8fafc;
+  }
+  [data-variant="bridge"] .hero-content {
+    align-items: flex-start;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--pad-x);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    text-align: left;
+  }
+  [data-variant="bridge"] .hero-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.03em;
+    text-align: left;
+  }
+  [data-variant="bridge"] .hero-subtitle {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: var(--accent);
+  }
+  [data-variant="bridge"] .hero-statement {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  [data-variant="bridge"] .hero-statement::before,
+  [data-variant="bridge"] .hero-statement::after {
+    display: none;
+  }
+  [data-variant="bridge"] .hero-portrait {
+    grid-row: span 2;
+    width: clamp(120px, 18vw, 180px);
+    height: clamp(120px, 18vw, 180px);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.1), 0 8px 32px rgba(0,0,0,0.08);
+  }
+  [data-variant="bridge"] .section-label {
+    font-family: var(--font-mono);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
+  [data-variant="bridge"] .section-label::before {
+    background: var(--accent);
+  }
+  [data-variant="bridge"] [data-section="about"] {
+    display: none;
+  }
+  [data-variant="bridge"] [data-section="education"] {
+    display: none;
+  }
+  [data-variant="bridge"] [data-section="languages"] {
+    display: none;
+  }
+  [data-variant="bridge"] .metrics-band {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-variant="bridge"] .metrics-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+  }
+  [data-variant="bridge"] .metric {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    text-align: left;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #fff;
+  }
+  [data-variant="bridge"] .metric-value {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--accent);
+  }
+  [data-variant="bridge"] .metric-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  [data-variant="bridge"] .metric-context {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: normal;
+  }
+  [data-variant="bridge"] .experience-dates {
+    display: none;
+  }
+  [data-variant="bridge"] .experience-entries {
+    border-left: 1px solid var(--border);
+    padding-left: 2rem;
+  }
+  [data-variant="bridge"] .role {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #fff;
+  }
+  [data-variant="bridge"] .role::before {
+    left: -2.35rem;
+    background: var(--accent);
+  }
+  [data-variant="bridge"] .service-number {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+  }
+  [data-variant="bridge"] .service-header {
+    grid-template-columns: 60px 1fr;
+  }
+  [data-variant="bridge"] .outcome {
+    background: var(--text);
+    color: var(--bg);
+    border-radius: 4px;
+  }
+  [data-variant="bridge"] .outcome p {
+    color: var(--text-secondary);
+  }
+
+  /* ── HEALTHCARE: Clinical Journal ── */
+  [data-variant="healthcare"] body {
+    background: #ffffff;
+  }
+  [data-variant="healthcare"] .hero {
+    text-align: center;
+    background: #ffffff;
+  }
+  [data-variant="healthcare"] .hero-name {
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  [data-variant="healthcare"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  [data-variant="healthcare"] .hero-portrait {
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 0 0 8px rgba(5, 150, 105, 0.08);
+  }
+  [data-variant="healthcare"] .section-label {
+    color: var(--accent);
+  }
+  [data-variant="healthcare"] .section-label::before {
+    background: var(--accent);
+  }
+  [data-variant="healthcare"] [data-section="expertise"] {
+    display: none;
+  }
+  [data-variant="healthcare"] [data-section="languages"] {
+    display: none;
+  }
+  [data-variant="healthcare"] .metrics-band {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-variant="healthcare"] .metrics-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+  [data-variant="healthcare"] .metric {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #fff;
+  }
+  [data-variant="healthcare"] .metric-value {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--accent);
+  }
+  [data-variant="healthcare"] .metric-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  [data-variant="healthcare"] .metric-context {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: normal;
+  }
+  [data-variant="healthcare"] .experience-dates {
+    font-size: 0.75rem;
+  }
+  [data-variant="healthcare"] .role {
+    border-left: 2px solid var(--accent);
+    border-radius: 0;
+    background: transparent;
+    padding-left: 1.5rem;
+  }
+  [data-variant="healthcare"] .role::before {
+    display: none;
+  }
+  [data-variant="healthcare"] .service-item {
+    border-top-color: var(--border);
+  }
+  [data-variant="healthcare"] .service-title {
+    font-weight: 600;
+  }
+  [data-variant="healthcare"] .outcome {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 4px;
+  }
+  [data-variant="healthcare"] .outcome p {
+    color: rgba(255,255,255,0.9);
+  }
+  [data-variant="healthcare"] .outcome-cta {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+
+  /* ── GLOBAL: European Magazine ── */
+  [data-variant="global"] body {
+    background: #fdfcfb;
+  }
+  [data-variant="global"] .hero {
+    text-align: center;
+    background: #fdfcfb;
+  }
+  [data-variant="global"] .hero-name {
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+  [data-variant="global"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  [data-variant="global"] .hero-statement {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  [data-variant="global"] .hero-statement::before,
+  [data-variant="global"] .hero-statement::after {
+    display: none;
+  }
+  [data-variant="global"] .hero-portrait {
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1), 0 0 0 10px rgba(184, 76, 47, 0.08);
+  }
+  [data-variant="global"] .section-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+  [data-variant="global"] .section-label::before {
+    display: none;
+  }
+  [data-variant="global"] [data-section="languages"] {
+    padding: var(--pad-y) var(--pad-x);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-alt);
+  }
+  [data-variant="global"] .languages {
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+  }
+  [data-variant="global"] .languages span {
+    color: var(--text);
+    font-weight: 500;
+  }
+  [data-variant="global"] .summary-lead {
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  [data-variant="global"] .experience-dates {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+  [data-variant="global"] .role-title {
+    font-weight: 400;
+  }
+  [data-variant="global"] .outcome {
+    background: var(--text);
+    color: var(--bg);
+    border-radius: 0;
+  }
+  [data-variant="global"] .outcome p {
+    color: var(--text-secondary);
+  }
+
+  /* ── VENTURE: Opportunity Board ── */
+  [data-variant="venture"] body {
+    background: #faf8f5;
+  }
+  [data-variant="venture"] .hero {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+    background: radial-gradient(ellipse at center, #fffcf8 0%, var(--bg) 70%);
+  }
+  [data-variant="venture"] .hero-content {
+    align-items: flex-start;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--pad-x);
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2.5rem;
+    text-align: left;
+  }
+  [data-variant="venture"] .hero-name {
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+  [data-variant="venture"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    text-align: left;
+  }
+  [data-variant="venture"] .hero-statement {
+    display: none;
+  }
+  [data-variant="venture"] .hero-portrait {
+    grid-row: span 2;
+    width: clamp(120px, 18vw, 180px);
+    height: clamp(120px, 18vw, 180px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 0 0 8px rgba(217, 119, 6, 0.08);
+  }
+  [data-variant="venture"] [data-section="about"] {
+    display: none;
+  }
+  [data-variant="venture"] [data-section="education"] {
+    display: none;
+  }
+  [data-variant="venture"] [data-section="languages"] {
+    display: none;
+  }
+  [data-variant="venture"] .summary-lead {
+    font-style: italic;
+    font-weight: 400;
+    max-width: 700px;
+  }
+  [data-variant="venture"] .summary-point strong {
+    color: var(--accent);
+  }
+  [data-variant="venture"] .metrics-band {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-variant="venture"] .metrics-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    max-width: 900px;
+  }
+  [data-variant="venture"] .metric {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    min-width: 140px;
+    flex: 1 1 180px;
+  }
+  [data-variant="venture"] .metric-value {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--accent);
+  }
+  [data-variant="venture"] .metric-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  [data-variant="venture"] .metric-context {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: normal;
+  }
+  [data-variant="venture"] .experience-dates {
+    display: none;
+  }
+  [data-variant="venture"] .experience-entries {
+    border-left: none;
+    padding-left: 0;
+  }
+  [data-variant="venture"] .role {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+  }
+  [data-variant="venture"] .role::before {
+    display: none;
+  }
+  [data-variant="venture"] .role-current {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  [data-variant="venture"] .service-item {
+    border-top-color: var(--border);
+  }
+  [data-variant="venture"] .service-header {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  [data-variant="venture"] .service-subtitle {
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+  [data-variant="venture"] .engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  [data-variant="venture"] .engagement-card {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+  }
+  [data-variant="venture"] .engagement-card::before {
+    background: var(--accent);
+  }
+  [data-variant="venture"] .outcome {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+  }
+  [data-variant="venture"] .outcome p {
+    color: rgba(255,255,255,0.9);
+  }
+  [data-variant="venture"] .outcome-cta {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+
+
      RESPONSIVE
      ══════════════════════════════════════════ */
   @media (max-width: 1024px) {
@@ -2833,7 +3538,7 @@ footer {
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="hero">
+<section class="hero" id="hero" data-section="hero">
   <div class="hero-grain"></div>
   <div class="hero-content" id="heroContent">
     <img src="headshot.jpg" alt="Beverly Nasimiyu" class="hero-portrait reveal" id="heroPortrait">
@@ -2870,7 +3575,7 @@ footer {
 </header>
 
 <!-- ABOUT / SUMMARY -->
-<section id="about">
+<section id="about" data-section="about">
   <span class="section-label reveal">About</span>
   <div class="summary reveal">
     <p class="summary-lead"><strong>Business Operations</strong> and <strong>Customer Success</strong> executive with <strong>9+ years</strong> of experience partnering with senior leadership across Sales, Marketing, Revenue Operations, Product, Customer Success, and Finance.</p>
@@ -2892,7 +3597,7 @@ footer {
 </section>
 
 <!-- METRICS -->
-<div class="metrics-band">
+<div class="metrics-band" data-section="metrics">
   <div class="metrics-inner">
     <div class="metric reveal">
       <div class="metric-value" data-target="25" data-suffix="%">0%</div>
@@ -2926,7 +3631,7 @@ footer {
 </div>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" data-section="experience">
   <span class="section-label reveal">Experience</span>
   <div class="experience-grid">
     <aside class="experience-dates reveal">
@@ -3071,7 +3776,7 @@ footer {
 <hr class="divider">
 
 <!-- COMPETENCIES -->
-<section id="expertise" class="competencies">
+<section id="expertise" class="competencies" data-section="expertise">
   <span class="section-label reveal">Expertise</span>
   <div class="competencies-list reveal">
     <span class="competency">Business Operations</span>
@@ -3111,7 +3816,7 @@ footer {
 <hr class="divider">
 
 <!-- SERVICES -->
-<section id="services" class="services-section">
+<section id="services" class="services-section" data-section="services">
   <div class="services-header reveal">
     <h2>Work With Beverly</h2>
     <p class="services-intro">Practical expertise. Packaged around the problems businesses actually need solved. I help businesses bring structure to operations, improve customer and revenue processes, make better use of their data, and build systems that help teams move faster. Whether you need a focused operational fix, better reporting, stronger customer processes, or ongoing business support, we can shape the engagement around what your business needs.</p>
@@ -3352,7 +4057,7 @@ footer {
 </section>
 
 <!-- EDUCATION -->
-<section id="education">
+<section id="education" data-section="education">
   <span class="section-label reveal">Education</span>
   <div class="reveal">
     <div class="education-entry">
@@ -3367,13 +4072,13 @@ footer {
 </section>
 
 <!-- LANGUAGES -->
-<section>
+<section data-section="languages">
   <span class="section-label reveal">Languages</span>
   <p class="languages reveal"><span>English</span> · <span>Swahili</span> · <span>Spanish</span></p>
 </section>
 
 <!-- FOOTER / CONTACT -->
-<footer id="contact">
+<footer id="contact" data-section="contact">
   <div class="footer-contact reveal">
     <div class="footer-contact-links">
       <a href="mailto:beverlynasimiyu@gmail.com" aria-label="Email">
@@ -3568,6 +4273,74 @@ footer {
     const saved = localStorage.getItem('portfolio-variant') || 'default';
     setVariant(saved);
   } catch(e) {}
+
+  // ── Variant-specific DOM restructuring ──
+  function restructureForVariant(variant) {
+    const sections = {
+      hero: document.querySelector('[data-section="hero"]'),
+      about: document.querySelector('[data-section="about"]'),
+      metrics: document.querySelector('[data-section="metrics"]'),
+      experience: document.querySelector('[data-section="experience"]'),
+      expertise: document.querySelector('[data-section="expertise"]'),
+      services: document.querySelector('[data-section="services"]'),
+      education: document.querySelector('[data-section="education"]'),
+      languages: document.querySelector('[data-section="languages"]'),
+      contact: document.querySelector('[data-section="contact"]'),
+    };
+
+    Object.values(sections).forEach(s => {
+      if (s) { s.style.display = ''; s.style.order = ''; }
+    });
+
+    if (variant === 'strategist') {
+      if (sections.metrics) sections.metrics.style.display = 'none';
+      if (sections.services) sections.services.style.display = 'none';
+      if (sections.education) sections.education.style.display = 'none';
+      if (sections.languages) sections.languages.style.display = 'none';
+      if (sections.about) sections.about.style.order = '-1';
+    }
+
+    if (variant === 'revenue') {
+      if (sections.about) sections.about.style.display = 'none';
+      if (sections.expertise) sections.expertise.style.display = 'none';
+      if (sections.education) sections.education.style.display = 'none';
+      if (sections.languages) sections.languages.style.display = 'none';
+    }
+
+    if (variant === 'bridge') {
+      if (sections.about) sections.about.style.display = 'none';
+      if (sections.education) sections.education.style.display = 'none';
+      if (sections.languages) sections.languages.style.display = 'none';
+    }
+
+    if (variant === 'healthcare') {
+      if (sections.expertise) sections.expertise.style.display = 'none';
+      if (sections.languages) sections.languages.style.display = 'none';
+    }
+
+    if (variant === 'global') {
+      if (sections.languages) sections.languages.style.order = '-1';
+    }
+
+    if (variant === 'venture') {
+      if (sections.about) sections.about.style.display = 'none';
+      if (sections.education) sections.education.style.display = 'none';
+      if (sections.languages) sections.languages.style.display = 'none';
+    }
+  }
+
+  const originalSetVariant = window.setVariant;
+  window.setVariant = function(variant) {
+    html.setAttribute('data-variant', variant);
+    variantBtns.forEach(btn => {
+      const isActive = btn.dataset.variant === variant;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+    try { localStorage.setItem('portfolio-variant', variant); } catch(e) {}
+    restructureForVariant(variant);
+  };
+
 })();
 </script>
 
