@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beverly Nasimiyu — Business Operations & Customer Success — Variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #fafaf8;
+    --bg-alt: #f3f1ed;
+    --bg-dark: #1a1a1a;
+    --text: #111111;
+    --text-secondary: #555555;
+    --text-light: #888888;
+    --accent: #b84c2f;
+    --accent-strong: #8b3a24;
+    --accent-light: rgba(184, 76, 47, 0.08);
+    --accent-glow: rgba(184, 76, 47, 0.15);
+    --border: #e0dcd6;
+    --border-strong: #c5c0b8;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --max-width: 1200px;
+    --pad-x: clamp(1.5rem, 5vw, 3.5rem);
+    --pad-y: clamp(5rem, 12vw, 10rem);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(184, 76, 47, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(184, 76, 47, 0.02) 0%, transparent 50%);
+  }
+  ::selection { background: var(--accent); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ── Navigation ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1.25rem var(--pad-x);
+    transition: background 300ms ease, box-shadow 300ms ease, top 300ms ease;
+  }
+  nav.header-hidden {
+    top: 56px;
+  }
+  nav.scrolled {
+    background: rgba(250, 250, 248, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: 0 1px 0 var(--border);
+  }
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+  .nav-brand::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 100%; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms ease;
+  }
+  .nav-brand:hover::after { transform: scaleX(1); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 200ms ease, opacity 300ms ease;
+    opacity: 0.7;
+  }
+  nav.scrolled .nav-links a {
+    opacity: 1;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 1.5px;
+    background: var(--accent);
+    transition: width 250ms ease;
+  }
+  .nav-links a:hover::after,
+  .nav-links a.active::after { width: 100%; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-toggle {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    width: 28px; height: 20px;
+    position: relative;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 100%; height: 2px;
+    background: var(--text);
+    position: absolute; left: 0;
+    transition: all 250ms ease;
+  }
+  .nav-toggle span:nth-child(1) { top: 0; }
+  .nav-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .nav-toggle span:nth-child(3) { bottom: 0; }
+  .nav-toggle.open span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: calc(var(--pad-y) + 60px) var(--pad-x) var(--pad-y);
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #fdfcfb 0%, var(--bg) 70%);
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 150ms linear, opacity 150ms ease;
+    will-change: transform, opacity;
+  }
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+  .hero-portrait {
+    width: clamp(140px, 22vw, 220px);
+    height: clamp(140px, 22vw, 220px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 0 0 8px rgba(184, 76, 47, 0.08);
+    margin-bottom: 2rem;
+    transition: box-shadow 300ms ease;
+    will-change: transform;
+    cursor: default;
+    animation: portraitReveal 1s ease-out;
+  }
+  .hero-portrait:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 0 0 12px rgba(184, 76, 47, 0.12);
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    max-width: 1000px;
+    margin-bottom: 1.5rem;
+    transition: text-shadow 400ms ease;
+    animation: fadeUp 0.8s ease-out 0.2s both;
+  }
+  .hero-name:hover {
+    text-shadow: 0 0 40px rgba(184, 76, 47, 0.15);
+  }
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease-out 0.4s both;
+  }
+  .hero-statement {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: center;
+    animation: fadeUp 0.8s ease-out 0.6s both;
+  }
+  .hero-statement::before,
+  .hero-statement::after {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    animation: gentleBounce 2.5s ease-in-out infinite;
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 100%;
+    background: var(--accent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── Compact Header (scroll-activated) ── */
+  .compact-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 90;
+    background: rgba(250, 250, 248, 0.95);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem var(--pad-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+  .compact-header.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .compact-header-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+  }
+  .compact-portrait {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    flex-shrink: 0;
+  }
+  .compact-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+  .compact-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-left: auto;
+  }
+  .compact-nav a {
+    color: var(--text-secondary);
+    transition: color 200ms ease, transform 200ms ease;
+    display: flex;
+    align-items: center;
+  }
+  .compact-nav a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  @keyframes scrollPulse {
+    0% { top: -100%; }
+    50% { top: 0; }
+    100% { top: 100%; }
+  }
+  @keyframes gentleBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── Section Base ── */
+  section {
+    padding: var(--pad-y) var(--pad-x);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    animation: accentPulse 3s ease-in-out infinite;
+  }
+  @keyframes accentPulse {
+    0%, 100% { opacity: 1; width: 24px; }
+    50% { opacity: 0.6; width: 32px; }
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  /* ── Summary ── */
+  .summary {
+    max-width: 720px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+  .summary-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--text);
+    margin-bottom: 3rem;
+    letter-spacing: -0.01em;
+  }
+  .summary-lead strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .summary-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  .summary-point {
+    padding: 1.5rem 0;
+    background: transparent;
+    border-left: none;
+    border-top: 2px solid var(--accent);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    transform: translateY(-3px);
+    transition: transform 250ms ease, border-color 250ms ease, color 250ms ease;
+  }
+  .summary-point:hover {
+    transform: translateY(-3px);
+    border-top-color: var(--text);
+  }
+  .summary-point:hover strong,
+  .summary-point strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .summary-point:hover strong {
+    color: var(--accent);
+  }
+
+  /* ── Metrics ── */
+  .metrics-band {
+    background: var(--bg-alt);
+    padding: var(--pad-y) var(--pad-x);
+    position: relative;
+  }
+  .metrics-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .metric {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    align-items: baseline;
+  }
+  .metric-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    color: var(--accent);
+    transition: transform 250ms ease, color 250ms ease;
+  }
+  .metric:hover .metric-value {
+    transform: translateY(-3px);
+    color: var(--text);
+  }
+  .metric-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .metric-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .metric-context {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  /* ── Experience ── */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .experience-dates {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    position: sticky;
+    top: 6rem;
+    transition: color 200ms ease;
+  }
+  .experience-dates:hover {
+    color: var(--accent);
+  }
+  .experience-dates .date-range {
+    display: block;
+    margin-bottom: 3.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 200ms ease, transform 200ms ease;
+    cursor: pointer;
+  }
+  .experience-dates .date-range:hover {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+  .experience-dates .date-range:last-child { margin-bottom: 0; }
+  .experience-entries {
+    border-left: 2px solid var(--border);
+    padding-left: 2.5rem;
+  }
+  .role {
+    margin-bottom: 5rem;
+    position: relative;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: background 300ms ease, transform 300ms ease;
+  }
+  .role:hover {
+    background: var(--accent-light);
+    transform: translateX(4px);
+  }
+  .role::before {
+    content: '';
+    position: absolute;
+    left: -2.85rem; top: 0.6rem;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .role:last-child { margin-bottom: 0; }
+  .role-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .role-current-badge {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(184, 76, 47, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid rgba(184, 76, 47, 0.2);
+  }
+  .role-company {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    transition: color 200ms ease;
+  }
+  .role:hover .role-company {
+    color: var(--accent);
+  }
+  .role-location {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .role ul {
+    list-style: none;
+    padding: 0;
+  }
+  .role li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    transition: color 200ms ease, padding-left 200ms ease;
+  }
+  .role li:hover {
+    color: var(--text);
+    padding-left: 1.5rem;
+  }
+  .role li::before {
+    content: '—';
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .role li strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .role-current .role-title {
+    color: var(--accent);
+  }
+  .role-current::before {
+    width: 9px; height: 9px;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(196, 93, 62, 0.2);
+  }
+
+  /* ── Competencies ── */
+  .competencies {
+    padding-top: 0;
+  }
+  .competencies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    align-items: center;
+  }
+  .competency {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    transition: color 200ms ease, transform 200ms ease;
+    cursor: default;
+    padding: 0.25rem 0;
+  }
+  .competency:hover { 
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .competency-sep {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* ── Education ── */
+  .education-entry {
+    margin-bottom: 2rem;
+    transition: transform 250ms ease;
+  }
+  .education-entry:hover {
+    transform: translateX(4px);
+  }
+  .education-entry:last-child { margin-bottom: 0; }
+  .education-degree {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    margin-bottom: 0.25rem;
+  }
+  .education-degree .highlight { color: var(--accent); font-weight: 700; }
+  .education-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Languages ── */
+  .languages {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-style: italic;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .languages span { 
+    color: var(--text);
+    transition: color 200ms ease;
+  }
+  .languages span:hover { color: var(--accent); }
+
+  /* ── Contact ── */
+  .contact-closing {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+  .contact-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .contact-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 200ms ease, color 200ms ease, transform 200ms ease;
+  }
+  .contact-links a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  
+footer {
+  padding: var(--pad-y) var(--pad-x) 2rem;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(to bottom, var(--bg), var(--bg-alt));
+  position: relative;
+}
+.footer-contact {
+  margin-bottom: 3rem;
+}
+.footer-contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.footer-contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 200ms ease, transform 200ms ease;
+  text-decoration: none;
+}
+.footer-contact-links a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.footer-contact-links svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.footer-copy {
+  opacity: 0.6;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Services ── */
+.services-section {
+  padding: var(--pad-y) var(--pad-x);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+}
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--accent));
+  opacity: 0.4;
+}
+.services-header {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+.services-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+.services-intro {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto;
+}
+.service-item {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  cursor: pointer;
+  transition: background 300ms ease, padding-left 300ms ease;
+}
+.service-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.service-item:hover {
+  background: var(--accent-light);
+  padding-left: 1.5rem;
+}
+.service-header {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2.5rem;
+  align-items: baseline;
+}
+.service-number {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.service-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.service-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  transition: color 200ms ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.service-item:hover .service-title {
+  color: var(--accent-strong);
+}
+.service-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 640px;
+}
+.service-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 500ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease;
+  opacity: 0;
+}
+.service-item.expanded .service-body {
+  max-height: 800px;
+  opacity: 1;
+}
+.service-body-inner {
+  padding-top: 2rem;
+  padding-left: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.service-includes-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+.service-includes li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  transition: color 200ms ease, padding-left 200ms ease;
+}
+.service-includes li::before {
+  content: '—';
+  position: absolute;
+  left: 0; top: 0;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+}
+.service-includes li:hover {
+  color: var(--text);
+  padding-left: 1.75rem;
+}
+.service-best-for {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding-top: 0.5rem;
+  font-style: italic;
+}
+.service-best-for strong {
+  color: var(--text);
+  font-weight: 600;
+  font-style: normal;
+}
+.service-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 300ms ease, background 300ms ease;
+}
+.service-item:hover .service-toggle-icon {
+  background: var(--accent);
+}
+.service-item.expanded .service-toggle-icon {
+  transform: rotate(45deg);
+  background: var(--accent);
+}
+.service-toggle-icon::before,
+.service-toggle-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--accent);
+  transition: background 300ms ease;
+}
+.service-item:hover .service-toggle-icon::before,
+.service-item:hover .service-toggle-icon::after,
+.service-item.expanded .service-toggle-icon::before,
+.service-item.expanded .service-toggle-icon::after {
+  background: #fff;
+}
+.service-toggle-icon::before {
+  width: 10px; height: 2px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.service-toggle-icon::after {
+  width: 2px; height: 10px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* ── Build Your Own ── */
+.build-your-own {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border);
+}
+.build-your-own h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+.build-your-own-intro {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin-bottom: 3rem;
+}
+.build-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.build-option {
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 250ms ease, transform 250ms ease, background 250ms ease, box-shadow 250ms ease;
+  background: transparent;
+}
+.build-option:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  background: var(--accent-light);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+.build-option.selected {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+.build-option-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.build-option-icon {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  transition: opacity 200ms ease;
+}
+.build-option:hover .build-option-icon {
+  opacity: 1;
+}
+.build-outcome-cta {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 720px;
+  font-style: italic;
+}
+
+/* ── Engagement Models ── */
+.engagement-models {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border);
+}
+.engagement-models h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  letter-spacing: -0.01em;
+}
+.engagement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.engagement-card {
+  padding: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+  position: relative;
+  overflow: hidden;
+}
+.engagement-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+.engagement-card:hover::before {
+  transform: scaleX(1);
+}
+.engagement-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+}
+.engagement-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+.engagement-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+.engagement-best {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+}
+.engagement-best strong {
+  color: var(--text);
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* ── Outcome ── */
+.outcome {
+  margin-top: 6rem;
+  padding: 5rem;
+  background: var(--bg-dark);
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.outcome::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(184, 76, 47, 0.15) 0%, transparent 50%);
+  animation: outcomePulse 8s ease-in-out infinite;
+}
+@keyframes outcomePulse {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10px, -10px) scale(1.1); }
+}
+.outcome h4 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.outcome p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+.outcome-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.25rem;
+  transition: gap 200ms ease, color 200ms ease;
+  position: relative;
+  z-index: 1;
+}
+.outcome-cta:hover {
+  gap: 1rem;
+  color: var(--accent);
+}
+/* ── Reveal Animation ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .metrics-inner { gap: 2.5rem; }
+    .experience-grid { grid-template-columns: 160px 1fr; gap: 3rem; }
+    .experience-dates { top: 5rem; }
+    .service-header { grid-template-columns: 60px 1fr; gap: 1.5rem; }
+    .service-body-inner { grid-template-columns: 1fr; gap: 2rem; padding-left: 60px; }
+    .engagement-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 280px; height: 100vh;
+      background: var(--bg);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 6rem 2rem 2rem;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.05);
+      transition: right 300ms ease;
+    }
+    .nav-links.open { right: 0; }
+    .nav-toggle { display: block; }
+    .hero { min-height: 90vh; }
+    .scroll-indicator { display: none; }
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .experience-dates {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .experience-dates .date-range { margin-bottom: 0; }
+    .experience-entries {
+      border-left: none;
+      padding-left: 0;
+    }
+    .role::before { display: none; }
+    .role:hover { transform: none; background: none; }
+    .metrics-inner { gap: 2rem; }
+    .metric { grid-template-columns: 1fr; gap: 0.75rem; }
+    .metric-value { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+    section { padding-top: var(--pad-y); }
+    .summary-points { grid-template-columns: 1fr; }
+    .service-header { grid-template-columns: 1fr; gap: 0.75rem; }
+    .service-number { font-size: 1.25rem; }
+    .service-body-inner { 
+      grid-template-columns: 1fr; 
+      gap: 1.5rem; 
+      padding-left: 0; 
+    }
+    .service-item { padding: 2rem 0; }
+    .service-item:hover { padding-left: 0; }
+    .build-options { grid-template-columns: 1fr; }
+    .engagement-grid { grid-template-columns: 1fr; }
+    .outcome { padding: 2.5rem 1.5rem; }
+  }
+
+  /* ══════════════════════════════════════════
+     VARIANT SELECTOR
+     ══════════════════════════════════════════ */
+  .variant-selector {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 200;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 500px;
+  }
+  .variant-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 200ms ease;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+  }
+  .variant-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .variant-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* ══════════════════════════════════════════
+     VARIANT: Revenue & Growth
+     ══════════════════════════════════════════ */
+  [data-variant="revenue"] {
+    --bg: #0a0a0a;
+    --bg-alt: #111111;
+    --text: #ffffff;
+    --text-secondary: #aaaaaa;
+    --accent: #f59e0b;
+    --accent-strong: #d97706;
+    --accent-light: rgba(245, 158, 11, 0.1);
+    --border: #333333;
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  [data-variant="revenue"] .hero {
+    background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%);
+  }
+  [data-variant="revenue"] .hero-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+  [data-variant="revenue"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+  }
+  [data-variant="revenue"] .hero-portrait {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.15), 0 8px 32px rgba(0,0,0,0.4);
+  }
+  [data-variant="revenue"] .metrics-band {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-variant="revenue"] .metric-value {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+  }
+  [data-variant="revenue"] .metric-label {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  [data-variant="revenue"] .outcome {
+    background: var(--accent);
+    color: #000;
+  }
+  [data-variant="revenue"] .outcome p {
+    color: rgba(0,0,0,0.8);
+  }
+  [data-variant="revenue"] .outcome-cta {
+    color: #000;
+    border-bottom-color: #000;
+  }
+  [data-variant="revenue"] .outcome-cta:hover {
+    color: #000;
+  }
+
+  /* ══════════════════════════════════════════
+     VARIANT: The Bridge
+     ══════════════════════════════════════════ */
+  [data-variant="bridge"] {
+    --bg: #f8fafc;
+    --bg-alt: #e2e8f0;
+    --text: #0f172a;
+    --text-secondary: #475569;
+    --accent: #06b6d4;
+    --accent-strong: #0891b2;
+    --accent-light: rgba(6, 182, 212, 0.08);
+    --border: #cbd5e1;
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  [data-variant="bridge"] .hero {
+    background: radial-gradient(ellipse at center, #ffffff 0%, var(--bg) 70%);
+  }
+  [data-variant="bridge"] .hero-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    letter-spacing: -0.03em;
+  }
+  [data-variant="bridge"] .hero-subtitle {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+  [data-variant="bridge"] .hero-statement {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+  [data-variant="bridge"] .hero-portrait {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.1), 0 8px 32px rgba(0,0,0,0.08);
+  }
+  [data-variant="bridge"] .section-label {
+    font-family: var(--font-mono);
+    letter-spacing: 0.2em;
+  }
+  [data-variant="bridge"] .service-number {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+  }
+  [data-variant="bridge"] .metric-value {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+  [data-variant="bridge"] .outcome {
+    background: var(--text);
+    color: var(--bg);
+  }
+  [data-variant="bridge"] .outcome p {
+    color: var(--text-secondary);
+  }
+
+  /* ══════════════════════════════════════════
+     VARIANT: The Health Strategist
+     ══════════════════════════════════════════ */
+  [data-variant="healthcare"] {
+    --bg: #ffffff;
+    --bg-alt: #f0fdf4;
+    --text: #1a1a1a;
+    --text-secondary: #555555;
+    --accent: #059669;
+    --accent-strong: #047857;
+    --accent-light: rgba(5, 150, 105, 0.08);
+    --border: #d1d5db;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  [data-variant="healthcare"] .hero {
+    background: #ffffff;
+  }
+  [data-variant="healthcare"] .hero-name {
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  [data-variant="healthcare"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  [data-variant="healthcare"] .hero-portrait {
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 0 0 8px rgba(5, 150, 105, 0.08);
+  }
+  [data-variant="healthcare"] .section-label {
+    color: var(--accent);
+  }
+  [data-variant="healthcare"] .section-label::before {
+    background: var(--accent);
+  }
+  [data-variant="healthcare"] .metrics-band {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-variant="healthcare"] .outcome {
+    background: var(--accent);
+    color: #fff;
+  }
+  [data-variant="healthcare"] .outcome p {
+    color: rgba(255,255,255,0.9);
+  }
+  [data-variant="healthcare"] .outcome-cta {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+
+  /* ══════════════════════════════════════════
+     VARIANT: The Global Professional
+     ══════════════════════════════════════════ */
+  [data-variant="global"] {
+    --bg: #fdfcfb;
+    --bg-alt: #f5f3ef;
+    --text: #1a1a1a;
+    --text-secondary: #666666;
+    --accent: #b84c2f;
+    --accent-strong: #8b3a24;
+    --accent-light: rgba(184, 76, 47, 0.08);
+    --border: #e0dcd6;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  [data-variant="global"] .hero {
+    background: #fdfcfb;
+  }
+  [data-variant="global"] .hero-name {
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+  [data-variant="global"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  [data-variant="global"] .hero-statement {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  [data-variant="global"] .hero-statement::before,
+  [data-variant="global"] .hero-statement::after {
+    display: none;
+  }
+  [data-variant="global"] .hero-portrait {
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1), 0 0 0 10px rgba(184, 76, 47, 0.08);
+  }
+  [data-variant="global"] .section-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+  [data-variant="global"] .section-label::before {
+    display: none;
+  }
+  [data-variant="global"] .languages {
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  [data-variant="global"] .outcome {
+    background: var(--text);
+    color: var(--bg);
+  }
+  [data-variant="global"] .outcome p {
+    color: var(--text-secondary);
+  }
+
+  /* ══════════════════════════════════════════
+     VARIANT: The Venture Partner
+     ══════════════════════════════════════════ */
+  [data-variant="venture"] {
+    --bg: #faf8f5;
+    --bg-alt: #f5f0e8;
+    --text: #2d2a26;
+    --text-secondary: #6b6560;
+    --accent: #d97706;
+    --accent-strong: #b45309;
+    --accent-light: rgba(217, 119, 6, 0.08);
+    --border: #e5e0d8;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  [data-variant="venture"] .hero {
+    background: radial-gradient(ellipse at center, #fffcf8 0%, var(--bg) 70%);
+  }
+  [data-variant="venture"] .hero-name {
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  [data-variant="venture"] .hero-subtitle {
+    font-style: normal;
+    font-weight: 400;
+  }
+  [data-variant="venture"] .hero-portrait {
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 0 0 8px rgba(217, 119, 6, 0.08);
+  }
+  [data-variant="venture"] .summary-lead {
+    font-style: italic;
+    font-weight: 400;
+  }
+  [data-variant="venture"] .outcome {
+    background: var(--accent);
+    color: #fff;
+  }
+  [data-variant="venture"] .outcome p {
+    color: rgba(255,255,255,0.9);
+  }
+  [data-variant="venture"] .outcome-cta {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+
+  /* ══════════════════════════════════════════
+     VARIANT: The Strategic Operator
+     ══════════════════════════════════════════ */
+  [data-variant="strategist"] {
+    --bg: #fafaf8;
+    --bg-alt: #f3f1ed;
+    --text: #111111;
+    --text-secondary: #555555;
+    --accent: #1a1a1a;
+    --accent-strong: #000000;
+    --accent-light: rgba(0, 0, 0, 0.04);
+    --border: #e0dcd6;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  [data-variant="strategist"] .hero {
+    background: radial-gradient(ellipse at center, #ffffff 0%, var(--bg) 70%);
+  }
+  [data-variant="strategist"] .hero-name {
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  [data-variant="strategist"] .hero-portrait {
+    border-color: var(--text);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 0 0 8px rgba(0,0,0,0.04);
+  }
+  [data-variant="strategist"] .section-label {
+    color: var(--text);
+  }
+  [data-variant="strategist"] .section-label::before {
+    background: var(--text);
+  }
+  [data-variant="strategist"] .metric-value {
+    color: var(--text);
+  }
+  [data-variant="strategist"] .outcome {
+    background: var(--text);
+    color: var(--bg);
+  }
+  [data-variant="strategist"] .outcome p {
+    color: rgba(250,250,248,0.7);
+  }
+  [data-variant="strategist"] .outcome-cta {
+    color: var(--bg);
+    border-bottom-color: var(--bg);
+  }
+
+  /* ══════════════════════════════════════════
+     RESPONSIVE
+     ══════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .metrics-inner { gap: 2.5rem; }
+    .experience-grid { grid-template-columns: 160px 1fr; gap: 3rem; }
+    .experience-dates { top: 5rem; }
+    .service-header { grid-template-columns: 60px 1fr; gap: 1.5rem; }
+    .service-body-inner { grid-template-columns: 1fr; gap: 2rem; padding-left: 60px; }
+    .engagement-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 280px; height: 100vh;
+      background: var(--bg);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 6rem 2rem 2rem;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.05);
+      transition: right 300ms ease;
+    }
+    .nav-links.open { right: 0; }
+    .nav-toggle { display: block; }
+    .hero { min-height: 90vh; }
+    .scroll-indicator { display: none; }
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .experience-dates {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .experience-dates .date-range { margin-bottom: 0; }
+    .experience-entries {
+      border-left: none;
+      padding-left: 0;
+    }
+    .role::before { display: none; }
+    .role:hover { transform: none; background: none; }
+    .metrics-inner { gap: 2rem; }
+    .metric { grid-template-columns: 1fr; gap: 0.75rem; }
+    .metric-value { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+    section { padding-top: var(--pad-y); }
+    .summary-points { grid-template-columns: 1fr; }
+    .service-header { grid-template-columns: 1fr; gap: 0.75rem; }
+    .service-number { font-size: 1.25rem; }
+    .service-body-inner {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-left: 0;
+    }
+    .service-item { padding: 2rem 0; }
+    .service-item:hover { padding-left: 0; }
+    .build-options { grid-template-columns: 1fr; }
+    .engagement-grid { grid-template-columns: 1fr; }
+    .outcome { padding: 2.5rem 1.5rem; }
+    .variant-selector {
+      top: auto;
+      bottom: 1rem;
+      right: 1rem;
+      left: 1rem;
+      max-width: none;
+      justify-content: center;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+
+<nav id="nav">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-content" id="heroContent">
+    <img src="headshot.jpg" alt="Beverly Nasimiyu" class="hero-portrait reveal" id="heroPortrait">
+    <h1 class="hero-name reveal">Beverly<br>Nasimiyu</h1>
+    <p class="hero-subtitle reveal">Business Operations &amp; Customer Success Executive</p>
+    <p class="hero-statement reveal">SAP · LinkedIn · International · Data-Driven</p>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- COMPACT HEADER (appears on scroll) -->
+<header class="compact-header" id="compactHeader">
+  <div class="compact-header-inner">
+    <img src="headshot.jpg" alt="Beverly Nasimiyu" class="compact-portrait">
+    <span class="compact-name">Beverly Nasimiyu</span>
+    <nav class="compact-nav">
+      <a href="#about" title="About" aria-label="About">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </a>
+      <a href="#experience" title="Experience" aria-label="Experience">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+      </a>
+      <a href="mailto:beverlynasimiyu@gmail.com" title="Email" aria-label="Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/beverly-nasimiyu" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ABOUT / SUMMARY -->
+<section id="about">
+  <span class="section-label reveal">About</span>
+  <div class="summary reveal">
+    <p class="summary-lead"><strong>Business Operations</strong> and <strong>Customer Success</strong> executive with <strong>9+ years</strong> of experience partnering with senior leadership across Sales, Marketing, Revenue Operations, Product, Customer Success, and Finance.</p>
+    <div class="summary-points">
+      <div class="summary-point">
+        <strong>Structure from ambiguity.</strong> I bring clarity to complex operational challenges. I drive accountability across teams.
+      </div>
+      <div class="summary-point">
+        <strong>Data into decisions.</strong> I translate metrics through dashboards, KPI tracking, and operational reporting to guide leadership.
+      </div>
+      <div class="summary-point">
+        <strong>Proven impact.</strong> I improve reporting accuracy. I reduce turnaround times. I standardize processes to increase organizational speed.
+      </div>
+      <div class="summary-point">
+        <strong>Executive trusted.</strong> I operate at the highest level with confidential information. I leverage AI and automation to improve efficiency.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics-band">
+  <div class="metrics-inner">
+    <div class="metric reveal">
+      <div class="metric-value" data-target="25" data-suffix="%">0%</div>
+      <div class="metric-content">
+        <div class="metric-label">Reporting accuracy improvement</div>
+        <div class="metric-context">"Led integration of Salesforce and finance systems, improving data reliability for faster, better-informed decisions."</div>
+      </div>
+    </div>
+    <div class="metric reveal">
+      <div class="metric-value" data-target="30" data-suffix="%">0%</div>
+      <div class="metric-content">
+        <div class="metric-label">Quote turnaround reduction</div>
+        <div class="metric-context">"Customized CPQ processes and dashboards to cut deal velocity and improve sales efficiency."</div>
+      </div>
+    </div>
+    <div class="metric reveal">
+      <div class="metric-value" data-target="9" data-suffix="+">0+</div>
+      <div class="metric-content">
+        <div class="metric-label">Years of experience</div>
+        <div class="metric-context">"Operating across Kenya, Spain, and remote — partnering with executive leadership on three continents."</div>
+      </div>
+    </div>
+    <div class="metric reveal">
+      <div class="metric-value" data-target="46" data-suffix="%">0%</div>
+      <div class="metric-content">
+        <div class="metric-label">Campaign engagement lift</div>
+        <div class="metric-context">"Used data analysis and A/B testing to optimize marketing operations and drive measurable engagement."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label reveal">Experience</span>
+  <div class="experience-grid">
+    <aside class="experience-dates reveal">
+      <a href="#role-1" class="date-range">Dec 2024 — Present</a>
+      <a href="#role-2" class="date-range">Apr 2024 — Nov 2024</a>
+      <a href="#role-3" class="date-range">2023 — Feb 2024</a>
+      <a href="#role-4" class="date-range">Jan 2022 — Jan 2023</a>
+      <a href="#role-5" class="date-range">Mar 2021 — Dec 2021</a>
+      <a href="#role-6" class="date-range">Jun 2018 — Feb 2021</a>
+      <a href="#role-7" class="date-range">Mar 2016 — May 2018</a>
+      <a href="#role-8" class="date-range">Mar 2015 — Feb 2016</a>
+      <a href="#role-9" class="date-range">Apr 2013 — Apr 2014</a>
+      <a href="#role-10" class="date-range">Jan 2012 — Mar 2013</a>
+      <a href="#role-11" class="date-range">Dec 2009 — Dec 2011</a>
+    </aside>
+    <div class="experience-entries">
+      <article class="role role-current reveal" id="role-1">
+        <h3 class="role-title">Regional Lead — MEE <span class="role-current-badge">Current</span></h3>
+        <p class="role-company">Business Operations &amp; Customer Success, SAP</p>
+        <p class="role-location">Barcelona, Catalonia, Spain · Hybrid</p>
+        <ul>
+          <li>Serve as cross-functional operator across the MEE region, aligning Sales, Product, and Services teams to accelerate time-to-value and drive accountability across the customer lifecycle.</li>
+          <li>Own the regional business operations and go-to-market roadmap, coordinating cross-functional initiatives to drive adoption, retention, and revenue expansion.</li>
+          <li>Built and led cross-functional teams to standardize onboarding, renewal, and escalation processes, improving operational consistency and reducing churn risk.</li>
+          <li>Partner with Account Executives and local stakeholders to identify upsell opportunities and influence contract renewals through data-backed recommendations.</li>
+          <li>Established regional KPI frameworks and reporting dashboards to track adoption, account health, and value realization, enabling data-driven decision-making for leadership.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-2">
+        <h3 class="role-title">License Audit Customer Success Partner Advisor</h3>
+        <p class="role-company">SAP</p>
+        <p class="role-location">Barcelona, Catalonia, Spain · Hybrid</p>
+        <ul>
+          <li>Advised on license audit and customer success processes, ensuring compliance and operational rigor across the customer lifecycle.</li>
+          <li>Partnered with cross-functional teams to streamline audit workflows and improve customer outcomes.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-3">
+        <h3 class="role-title">Deal Desk Analyst</h3>
+        <p class="role-company">Revenue &amp; Sales Operations, LinkedIn</p>
+        <p class="role-location">Barcelona, Catalonia, Spain · Hybrid</p>
+        <ul>
+          <li>Operated at the intersection of Revenue Operations, Analytics, and Sales, supporting deal execution, forecasting, and business reporting for a global sales organization.</li>
+          <li>Led integration of Salesforce and finance systems, improving reporting accuracy by <strong>25%</strong> and streamlining data flow for faster, better-informed decisions.</li>
+          <li>Customized and administered CPQ processes and dashboards, achieving a <strong>30%</strong> reduction in quote turnaround time and improving sales efficiency.</li>
+          <li>Analyzed KPIs and business trends using Tableau and Excel to identify growth opportunities, bottlenecks, and risks across revenue-generating functions.</li>
+          <li>Facilitated compliance and accountability by guiding deals through structured approval workflows.</li>
+          <li>Prepared and delivered operational reports and presentations to stakeholders, enhancing strategic discussions and business reviews.</li>
+          <li>Directed a sales team to increase weekly activity by <strong>20%</strong> and improve forecast accuracy by <strong>15%</strong> through structured reporting and coaching.</li>
+          <li>Established data-driven pricing best practices, supporting informed commercial decision-making across the organization.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-4">
+        <h3 class="role-title">Digital Operations Lead</h3>
+        <p class="role-company">Trendy Clothing KE</p>
+        <p class="role-location">Nairobi County, Kenya</p>
+        <ul>
+          <li>Managed end-to-end onboarding operations, tailoring processes and documentation to client needs and improving implementation consistency.</li>
+          <li>Built trust-based cross-functional relationships that reduced churn risk and improved satisfaction through proactive issue resolution.</li>
+          <li>Collaborated with cross-functional teams to translate customer feedback into product and process improvements, driving a <strong>34%</strong> increase in contract renewals.</li>
+          <li>Monitored progress against milestones and provided operational guidance during implementation to ensure smooth, on-time delivery.</li>
+          <li>Used data analysis and A/B testing to optimize marketing operations, achieving a <strong>46%</strong> increase in campaign engagement.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-5">
+        <h3 class="role-title">Marketing Operations Manager</h3>
+        <p class="role-company">Trendy Clothing KE</p>
+        <p class="role-location">Nairobi County, Kenya</p>
+        <ul>
+          <li>Led marketing operations strategy and execution, coordinating campaigns and cross-functional initiatives to drive business growth.</li>
+          <li>Managed marketing workflows, budget allocation, and performance tracking to optimize campaign effectiveness and ROI.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-6">
+        <h3 class="role-title">Marketing Assistant</h3>
+        <p class="role-company">Trendy Clothing KE</p>
+        <p class="role-location">Nairobi County, Kenya · Hybrid</p>
+        <ul>
+          <li>Supported marketing operations and campaign execution, contributing to increased brand visibility and customer engagement.</li>
+          <li>Assisted with market research, content coordination, and performance reporting to inform marketing strategy.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-7">
+        <h3 class="role-title">Sales and Marketing Consultant</h3>
+        <p class="role-company">Soluble Code · Full-time</p>
+        <p class="role-location">Nairobi County, Kenya · Hybrid</p>
+        <ul>
+          <li>Provided sales and marketing consulting services, developing strategies to drive customer acquisition and revenue growth.</li>
+          <li>Conducted market research and implemented marketing initiatives to improve brand positioning and market reach.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-8">
+        <h3 class="role-title">Research and Marketing Consultant</h3>
+        <p class="role-company">Go Touch Down Travel and Tours · Full-time</p>
+        <p class="role-location">Hybrid</p>
+        <ul>
+          <li>Led market research and marketing initiatives to support business development and customer engagement strategies.</li>
+          <li>Developed insights that informed product positioning and marketing campaigns.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-9">
+        <h3 class="role-title">Brand Ambassador</h3>
+        <p class="role-company">Golden Marketing · Part-time</p>
+        <p class="role-location">Nairobi County, Kenya</p>
+        <ul>
+          <li>Represented the brand at events and in-market, building awareness and driving engagement with target audiences.</li>
+          <li>Collected customer feedback and market insights to inform brand strategy and campaign development.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-10">
+        <h3 class="role-title">Product Marketing Specialist</h3>
+        <p class="role-company">Weetabix East Africa · Contract</p>
+        <p class="role-location">Nairobi County, Kenya · On-site</p>
+        <ul>
+          <li>Supported product marketing initiatives, including sales enablement, promotional campaigns, and market analysis.</li>
+          <li>Developed materials and strategies to drive product adoption and market share.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal" id="role-11">
+        <h3 class="role-title">Administrative Assistant / Office Manager</h3>
+        <p class="role-company">Armco Kenya Ltd</p>
+        <p class="role-location">Nairobi County, Kenya · On-site</p>
+        <ul>
+          <li>Managed office operations, administrative processes, and team coordination to ensure smooth day-to-day functioning.</li>
+          <li>Supported executive and team operations through process organization, documentation, and stakeholder communication.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMPETENCIES -->
+<section id="expertise" class="competencies">
+  <span class="section-label reveal">Expertise</span>
+  <div class="competencies-list reveal">
+    <span class="competency">Business Operations</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Revenue Operations</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Cross-Functional Coordination</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Strategic Planning</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Process Improvement</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Executive Partnership</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Stakeholder Management</span>
+    <span class="competency-sep"></span>
+    <span class="competency">KPI Tracking &amp; Dashboards</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Operational Reporting</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Salesforce</span>
+    <span class="competency-sep"></span>
+    <span class="competency">CPQ</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Tableau</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Excel</span>
+    <span class="competency-sep"></span>
+    <span class="competency">AI &amp; Automation</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Team Leadership</span>
+    <span class="competency-sep"></span>
+    <span class="competency">Change Management</span>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="services-header reveal">
+    <h2>Work With Beverly</h2>
+    <p class="services-intro">Practical expertise. Packaged around the problems businesses actually need solved. I help businesses bring structure to operations, improve customer and revenue processes, make better use of their data, and build systems that help teams move faster. Whether you need a focused operational fix, better reporting, stronger customer processes, or ongoing business support, we can shape the engagement around what your business needs.</p>
+  </div>
+
+  <div class="services-list">
+    <article class="service-item reveal" data-service="1">
+      <div class="service-header">
+        <span class="service-number">01</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Operations &amp; Process <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Bring structure to a business that's getting harder to manage.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Process and workflow review</li>
+              <li>SOP development and standardization</li>
+              <li>Operational documentation</li>
+              <li>Workflow improvement</li>
+              <li>Cross-functional process alignment</li>
+              <li>KPI and accountability frameworks</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Businesses that have grown quickly and need their operations to catch up.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="2">
+      <div class="service-header">
+        <span class="service-number">02</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Revenue Operations <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Make the journey from opportunity to close more organized, visible and efficient.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Sales and revenue workflow review</li>
+              <li>Deal process optimization</li>
+              <li>CPQ process review</li>
+              <li>Approval workflow improvement</li>
+              <li>Pipeline and KPI reporting</li>
+              <li>Sales-process documentation</li>
+              <li>Identification of operational bottlenecks</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Sales teams that need better processes, reporting and operational visibility.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="3">
+      <div class="service-header">
+        <span class="service-number">03</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Customer Success <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Build a more consistent journey from onboarding to renewal.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Customer onboarding process design</li>
+              <li>Renewal workflow review</li>
+              <li>Escalation process design</li>
+              <li>Customer-health KPI frameworks</li>
+              <li>Customer journey documentation</li>
+              <li>Cross-functional customer-success workflows</li>
+              <li>Retention and churn-risk processes</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Businesses looking to improve customer experience, retention and operational consistency.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="4">
+      <div class="service-header">
+        <span class="service-number">04</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Data &amp; Business Reporting <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Turn scattered business information into reporting leaders can actually use.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>KPI identification</li>
+              <li>Operational reporting</li>
+              <li>Dashboard structure</li>
+              <li>Excel / Google Sheets reporting</li>
+              <li>Tableau reporting support</li>
+              <li>Business-performance tracking</li>
+              <li>Data-backed recommendations</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams spending too much time collecting information and not enough time using it.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="5">
+      <div class="service-header">
+        <span class="service-number">05</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Automation &amp; Workflow <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Find the repetitive work, simplify it, and build a better way of working.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Workflow mapping</li>
+              <li>Process automation opportunities</li>
+              <li>Data-flow improvement</li>
+              <li>SOP optimization</li>
+              <li>AI-assisted workflow opportunities</li>
+              <li>Operational efficiency review</li>
+              <li>Automation recommendations</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams where repetitive processes are consuming time and creating avoidable errors.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-item reveal" data-service="6">
+      <div class="service-header">
+        <span class="service-number">06</span>
+        <div class="service-title-group">
+          <h3 class="service-title">Business / Executive Support <span class="service-toggle-icon"></span></h3>
+          <p class="service-subtitle">Bring an experienced operator into the room when you need things to move.</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <div class="service-includes">
+            <div class="service-includes-title">Includes</div>
+            <ul>
+              <li>Executive-ready reporting</li>
+              <li>Meeting preparation and follow-through</li>
+              <li>Cross-functional coordination</li>
+              <li>Project and program support</li>
+              <li>Stakeholder communication</li>
+              <li>Business reviews</li>
+              <li>Operational planning</li>
+            </ul>
+          </div>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Founders, executives and growing teams that need additional operational horsepower without immediately building another full-time function.
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="build-your-own reveal">
+    <h3>Build Your Own Engagement</h3>
+    <p class="build-your-own-intro">Not every business needs a package. Your challenge might sit across several areas. We can combine capabilities to create an engagement around your specific situation.</p>
+    <div class="build-options">
+      <div class="build-option" data-option="operations">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Operations</div>
+      </div>
+      <div class="build-option" data-option="revenue">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Revenue</div>
+      </div>
+      <div class="build-option" data-option="customer-success">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Customer Success</div>
+      </div>
+      <div class="build-option" data-option="data">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Data</div>
+      </div>
+      <div class="build-option" data-option="automation">
+        <div class="build-option-icon">◈</div>
+        <div class="build-option-name">Automation</div>
+      </div>
+    </div>
+    <p class="build-outcome-cta">Tell me what isn't working. We'll work backwards from the outcome.</p>
+  </div>
+
+  <div class="engagement-models reveal">
+    <h3>How We Can Work Together</h3>
+    <div class="engagement-grid">
+      <div class="engagement-card">
+        <div class="engagement-title">Focused Sprint</div>
+        <div class="engagement-desc">A defined problem. A defined outcome.</div>
+        <div class="engagement-best"><strong>Best for:</strong> A process review, dashboard, workflow improvement, SOP development or operational challenge.</div>
+      </div>
+      <div class="engagement-card">
+        <div class="engagement-title">Project Engagement</div>
+        <div class="engagement-desc">A larger operational initiative with a clear beginning and end.</div>
+        <div class="engagement-best"><strong>Best for:</strong> Process redesign, customer-success improvements, revenue-operations initiatives or reporting projects.</div>
+      </div>
+      <div class="engagement-card">
+        <div class="engagement-title">Ongoing Partnership</div>
+        <div class="engagement-desc">Flexible operational support for businesses that need an experienced operator in their corner.</div>
+        <div class="engagement-best"><strong>Best for:</strong> Founders, growing businesses and teams that need continued support across operations, reporting, customer success or process improvement.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="outcome reveal">
+    <h4>The Outcome</h4>
+    <p>More clarity. Better processes. Better visibility. Less operational friction.</p>
+    <a href="#contact" class="outcome-cta">
+      Let's talk about what you're trying to improve
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <span class="section-label reveal">Education</span>
+  <div class="reveal">
+    <div class="education-entry">
+      <p class="education-degree"><span class="highlight">MBA — Master of Business Administration</span></p>
+      <p class="education-meta">United States International University-Africa · 2022 — 2025 · Kenya</p>
+    </div>
+    <div class="education-entry">
+      <p class="education-degree">BSc Medical Laboratory Science</p>
+      <p class="education-meta">Kenyatta University · 2012 — 2016 · Kenya</p>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section>
+  <span class="section-label reveal">Languages</span>
+  <p class="languages reveal"><span>English</span> · <span>Swahili</span> · <span>Spanish</span></p>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="footer-contact reveal">
+    <div class="footer-contact-links">
+      <a href="mailto:beverlynasimiyu@gmail.com" aria-label="Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        beverlynasimiyu@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/beverly-nasimiyu" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        LinkedIn
+      </a>
+      <a href="tel:+34711034695" aria-label="Phone">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        +34 711 034 695
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 Beverly Nasimiyu · Barcelona, Spain · Operating globally</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  const nav = document.getElementById('nav');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  const heroContent = document.getElementById('heroContent');
+  const compactHeader = document.getElementById('compactHeader');
+  const contactBar = document.getElementById('contactBar');
+  const hero = document.getElementById('hero');
+
+  // ── Sticky nav + compact header ──
+  let lastScrollY = 0;
+  function onScroll() {
+    const scrollY = window.scrollY;
+    const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    const footer = document.getElementById('contact');
+    const footerRect = footer ? footer.getBoundingClientRect() : null;
+
+    // Main nav background
+    nav.classList.toggle('scrolled', scrollY > 60);
+
+    // Compact header: show when scrolled past hero midpoint
+    if (heroBottom < heroHeight * 0.5) {
+      compactHeader.classList.add('visible');
+      nav.classList.add('header-hidden');
+    } else {
+      compactHeader.classList.remove('visible');
+      nav.classList.remove('header-hidden');
+    }
+
+    // Hero shrink + move left on scroll
+    if (heroContent && hero) {
+      const rect = hero.getBoundingClientRect();
+      const scrollProgress = Math.min(Math.max(-rect.top / heroHeight, 0), 1);
+      const eased = 1 - Math.pow(1 - scrollProgress, 3);
+      
+      const scale = 1 - eased * 0.25;
+      const translateX = eased * -30;
+      const translateY = eased * -40;
+      const opacity = 1 - eased * 0.3;
+      
+      heroContent.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      heroContent.style.opacity = opacity;
+    }
+
+    lastScrollY = scrollY;
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+
+  links.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+
+  // ── Intersection Observer: reveals ──
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // ── Metric counter animation ──
+  const metrics = document.querySelectorAll('.metric-value[data-target]');
+  let metricsCounted = false;
+
+  function animateMetrics() {
+    if (metricsCounted) return;
+    const band = document.querySelector('.metrics-band');
+    const rect = band.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+      metricsCounted = true;
+      metrics.forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', animateMetrics, { passive: true });
+  animateMetrics();
+
+  // ── Active nav link on scroll ──
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+  // ── Service item toggle ──
+  const serviceItems = document.querySelectorAll('.service-item');
+  serviceItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const wasExpanded = item.classList.contains('expanded');
+      serviceItems.forEach(i => i.classList.remove('expanded'));
+      if (!wasExpanded) {
+        item.classList.add('expanded');
+      }
+    });
+  });
+
+  // ── Build option selection ──
+  const buildOptions = document.querySelectorAll('.build-option');
+  buildOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opt.classList.toggle('selected');
+      if (opt.classList.contains('selected')) {
+        opt.style.borderColor = 'var(--accent)';
+        opt.style.background = 'var(--accent-light)';
+      } else {
+        opt.style.borderColor = '';
+        opt.style.background = '';
+      }
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function() {
+  'use strict';
+
+  const html = document.documentElement;
+  const buttons = document.querySelectorAll('.variant-btn');
+
+  function setVariant(variant) {
+    html.setAttribute('data-variant', variant);
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.variant === variant);
+    });
+    try {
+      localStorage.setItem('portfolio-variant', variant);
+    } catch(e) {}
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setVariant(btn.dataset.variant);
+    });
+  });
+
+  let saved = 'default';
+  try {
+    saved = localStorage.getItem('portfolio-variant') || 'default';
+  } catch(e) {}
+  setVariant(saved);
+
+  const nav = document.getElementById('nav');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  const heroContent = document.getElementById('heroContent');
+  const compactHeader = document.getElementById('compactHeader');
+  const hero = document.getElementById('hero');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+    if (heroBottom < heroHeight * 0.5) {
+      compactHeader.classList.add('visible');
+      nav.classList.add('header-hidden');
+    } else {
+      compactHeader.classList.remove('visible');
+      nav.classList.remove('header-hidden');
+    }
+    if (heroContent && hero) {
+      const rect = hero.getBoundingClientRect();
+      const scrollProgress = Math.min(Math.max(-rect.top / heroHeight, 0), 1);
+      const eased = 1 - Math.pow(1 - scrollProgress, 3);
+      const scale = 1 - eased * 0.25;
+      const translateX = eased * -30;
+      const translateY = eased * -40;
+      const opacity = 1 - eased * 0.3;
+      heroContent.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      heroContent.style.opacity = opacity;
+    }
+  });
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => revealObserver.observe(el));
+
+  const metrics = document.querySelectorAll('.metric-value[data-target]');
+  let metricsCounted = false;
+  function animateMetrics() {
+    if (metricsCounted) return;
+    const band = document.querySelector('.metrics-band');
+    const rect = band.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+      metricsCounted = true;
+      metrics.forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+  }
+  window.addEventListener('scroll', animateMetrics, { passive: true });
+  animateMetrics();
+
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+  sections.forEach(s => sectionObserver.observe(s));
+
+  const serviceItems = document.querySelectorAll('.service-item');
+  serviceItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const wasExpanded = item.classList.contains('expanded');
+      serviceItems.forEach(i => i.classList.remove('expanded'));
+      if (!wasExpanded) {
+        item.classList.add('expanded');
+      }
+    });
+  });
+
+  const buildOptions = document.querySelectorAll('.build-option');
+  buildOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opt.classList.toggle('selected');
+      if (opt.classList.contains('selected')) {
+        opt.style.borderColor = 'var(--accent)';
+        opt.style.background = 'var(--accent-light)';
+      } else {
+        opt.style.borderColor = '';
+        opt.style.background = '';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

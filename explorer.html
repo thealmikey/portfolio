@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beverly Nasimiyu — Portfolio Variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #111111;
+    --text-secondary: #555555;
+    --accent: #b84c2f;
+    --border: #e0dcd6;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --max-width: 1200px;
+    --pad-x: clamp(1.5rem, 5vw, 3.5rem);
+    --pad-y: clamp(5rem, 12vw, 10rem);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .explorer-header {
+    padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) * 0.6);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .explorer-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .explorer-header p {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .explorer-header .prototype-note {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .prototype-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: border-color 200ms ease, color 200ms ease;
+  }
+  .prototype-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .variants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--pad-x) var(--pad-y);
+  }
+  .variant-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.5rem;
+    transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+  }
+  .variant-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+  }
+  .variant-number {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .variant-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .variant-positioning {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+  .variant-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+  .variant-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+    transition: gap 200ms ease;
+    align-self: flex-start;
+  }
+  .variant-link:hover {
+    gap: 0.75rem;
+  }
+  .variant-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  footer {
+    padding: 3rem var(--pad-x) 2rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .variants-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="explorer-header">
+    <h1>Portfolio Positioning System</h1>
+    <p>Six radically different lenses over the same underlying career. Each variant reframes Beverly's experience for a distinct professional opportunity — same evidence, different story.</p>
+    <div class="prototype-note">Locked-in prototype</div>
+    <a href="index.html" class="prototype-link">View locked-in prototype →</a>
+  </div>
+
+  <div class="variants-grid">
+    <article class="variant-card">
+      <div class="variant-number">01</div>
+      <h2 class="variant-title">The Strategic Operator</h2>
+      <p class="variant-positioning">"I turn complexity into systems that work."</p>
+      <p class="variant-desc">The strongest general-purpose executive profile. Premium consulting aesthetic with editorial typography, sophisticated grids, and a focus on operational leadership, measurable results, and cross-functional coordination.</p>
+      <a href="variant.html?v=strategist" class="variant-link">
+        View variant
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="variant-card">
+      <div class="variant-number">02</div>
+      <h2 class="variant-title">Revenue & Growth</h2>
+      <p class="variant-positioning">"The person behind the numbers."</p>
+      <p class="variant-desc">Makes Beverly look like a Revenue Operations and commercial strategy professional. Metrics-forward with bold data visualization, aggressive typography, and a focus on Salesforce, CPQ, LinkedIn deal execution, and revenue outcomes.</p>
+      <a href="variant.html?v=revenue" class="variant-link">
+        View variant
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="variant-card">
+      <div class="variant-number">03</div>
+      <h2 class="variant-title">The Bridge</h2>
+      <p class="variant-positioning">"Where business problems meet technology."</p>
+      <p class="variant-desc">Positions her as the translator between business requirements and technology execution. Modern SaaS aesthetic with system-diagram feel, flow lines, and emphasis on CRM, automation, AI, and digital transformation.</p>
+      <a href="variant.html?v=bridge" class="variant-link">
+        View variant
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="variant-card">
+      <div class="variant-number">04</div>
+      <h2 class="variant-title">The Health Strategist</h2>
+      <p class="variant-positioning">"Where healthcare understanding meets business execution."</p>
+      <p class="variant-desc">Turns the science degree from a buried footnote into a primary asset. Targets HealthTech, MedTech, diagnostics, and healthcare SaaS with a clinical-editorial aesthetic and restrained scientific color palette.</p>
+      <a href="variant.html?v=healthcare" class="variant-link">
+        View variant
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="variant-card">
+      <div class="variant-number">05</div>
+      <h2 class="variant-title">The Global Professional</h2>
+      <p class="variant-positioning">"Building across markets, cultures and disciplines."</p>
+      <p class="variant-desc">Brings Spain, Kenya, and multilingual capability to the foreground. European editorial and fashion-business magazine aesthetic. Targets Spanish companies, European startups, and cross-border ventures.</p>
+      <a href="variant.html?v=global" class="variant-link">
+        View variant
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="variant-card">
+      <div class="variant-number">06</div>
+      <h2 class="variant-title">The Venture Partner</h2>
+      <p class="variant-positioning">"What could we build together?"</p>
+      <p class="variant-desc">Transforms the portfolio from a CV into an opportunity magnet. Warm, conversational, and personal. Targets freelance, consulting, partnerships, startup exploration, and venture opportunities.</p>
+      <a href="variant.html?v=venture" class="variant-link">
+        View variant
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  </div>
+
+  <footer>
+    <p>Prototype exploration · Six positioning lenses over one career · Content engine remains shared</p>
+  </footer>
+
+</body>
+</html>
