@@ -5017,10 +5017,10 @@ footer {
     <div class="schedule reveal">
       <p class="schedule-text">Available for select advisory and operational partnerships.</p>
       <button 
-        data-cal-link="beverly-nasimiyu/30min" 
+        data-cal-link="michael-gikaru/15min" 
         data-cal-config='{"layout":"month_view"}'
         class="schedule-btn">
-        Book a 30-minute call
+        Book a 15-minute call
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
     </div>
@@ -5316,6 +5316,13 @@ footer {
 </script>
 <script>
   (function(){var s=document.createElement("script");s.src="https://app.cal.com/embed/embed.js";s.async=true;document.head.appendChild(s);})();
+</script>
+<script>
+  window.addEventListener('load', function() {
+    if (typeof Cal !== 'undefined') {
+      Cal("init", { origin: "https://cal.com" });
+    }
+  });
 </script>
 
 </body>
