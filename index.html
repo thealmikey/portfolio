@@ -1692,13 +1692,12 @@ footer {
     <span class="section-label reveal">Schedule</span>
     <div class="schedule reveal">
       <p class="schedule-text">Available for select advisory and operational partnerships.</p>
-      <button 
+      <a href="https://cal.com/michael-gikaru/15min" 
         data-cal-link="michael-gikaru/15min" 
-        data-cal-config='{"layout":"month_view"}'
         class="schedule-btn">
         Book a 15-minute call
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
+      </a>
     </div>
   </section>
 </section>
@@ -1890,7 +1889,12 @@ footer {
 })();
 </script>
 <script>
-  window.Cal = window.Cal || { q: [] };
+  try {
+    window.Cal = window.Cal || { q: [], config: {} };
+    window.Cal.q.push(['preload', { calLink: 'michael-gikaru/15min', type: 'modal' }]);
+  } catch (e) {
+    console.error('[Cal.com] Stub init failed:', e);
+  }
 </script>
 <script>
   try {
@@ -1901,24 +1905,16 @@ footer {
 </script>
 <script>
   try {
-    var scheduleBtn = document.querySelector('.schedule-btn');
-    if (scheduleBtn) {
-      scheduleBtn.addEventListener('click', function(e) {
-        try {
-          if (typeof Cal !== 'undefined' && Cal.q) {
-            Cal.q.push(['modal', { calLink: 'michael-gikaru/15min', config: { layout: 'month_view' } }]);
-          } else {
-            console.warn('[Cal.com] Cal not ready yet, opening fallback');
-            window.open('https://cal.com/michael-gikaru/15min', '_blank');
-          }
-        } catch (err) {
-          console.error('[Cal.com] Button click error:', err);
-          window.open('https://cal.com/michael-gikaru/15min', '_blank');
-        }
-      });
-    }
+    window.Cal = window.Cal || { q: [] };
+    window.Cal.on('linkFailed', function(e) {
+      console.error('[Cal.com] Booking link failed:', e);
+      window.open('https://cal.com/michael-gikaru/15min', '_blank');
+    });
+    window.Cal.on('modal', function(e) {
+      console.log('[Cal.com] Modal opened:', e);
+    });
   } catch (e) {
-    console.error('[Cal.com] Failed to attach button handler:', e);
+    console.error('[Cal.com] Failed to attach event handlers:', e);
   }
 </script>
 </body>
