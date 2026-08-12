@@ -5018,7 +5018,6 @@ footer {
       <p class="schedule-text">Available for select advisory and operational partnerships.</p>
       <button 
         data-cal-link="michael-gikaru/15min" 
-        data-cal-namespace="15min"
         data-cal-config='{"layout":"month_view"}'
         class="schedule-btn">
         Book a 15-minute call
@@ -5319,7 +5318,33 @@ footer {
   window.Cal = window.Cal || { q: [] };
 </script>
 <script>
-  (function(){var s=document.createElement("script");s.src="https://app.cal.com/embed/embed.js";s.async=true;document.head.appendChild(s);})();
+  try {
+    (function(){var s=document.createElement("script");s.src="https://app.cal.com/embed/embed.js";s.async=true;document.head.appendChild(s);})();
+  } catch (e) {
+    console.error('[Cal.com] Failed to load embed script:', e);
+  }
+</script>
+<script>
+  try {
+    var scheduleBtn = document.querySelector('.schedule-btn');
+    if (scheduleBtn) {
+      scheduleBtn.addEventListener('click', function(e) {
+        try {
+          if (typeof Cal !== 'undefined' && Cal.q) {
+            Cal.q.push(['modal', { calLink: 'michael-gikaru/15min', config: { layout: 'month_view' } }]);
+          } else {
+            console.warn('[Cal.com] Cal not ready yet, opening fallback');
+            window.open('https://cal.com/michael-gikaru/15min', '_blank');
+          }
+        } catch (err) {
+          console.error('[Cal.com] Button click error:', err);
+          window.open('https://cal.com/michael-gikaru/15min', '_blank');
+        }
+      });
+    }
+  } catch (e) {
+    console.error('[Cal.com] Failed to attach button handler:', e);
+  }
 </script>
 
 </body>
