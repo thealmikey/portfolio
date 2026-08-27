@@ -235,7 +235,6 @@ const experience = [
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
-  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -244,18 +243,6 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  useEffect(() => {
-    if (!navOpen) return
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as Node
-      if (navRef.current && !navRef.current.contains(target)) {
-        setNavOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [navOpen])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -291,7 +278,6 @@ function App() {
 
       {/* Navigation */}
       <nav
-        ref={navRef}
         className={`nav ${scrolled ? 'nav--scrolled' : ''}`}
         aria-label="Primary"
       >
@@ -312,6 +298,13 @@ function App() {
           <li><a href="#belief" onClick={() => setNavOpen(false)}>Belief</a></li>
           <li><a href="#contact" onClick={() => setNavOpen(false)}>Contact</a></li>
         </ul>
+        {navOpen && (
+          <div
+            className="nav-backdrop"
+            onClick={() => setNavOpen(false)}
+            aria-hidden="true"
+          />
+        )}
       </nav>
 
       {/* Hero */}
