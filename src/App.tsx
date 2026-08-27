@@ -234,6 +234,7 @@ const experience = [
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -242,6 +243,13 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (!navOpen) return
+    const handleClick = () => setNavOpen(false)
+    document.addEventListener('click', handleClick, { once: true })
+    return () => document.removeEventListener('click', handleClick)
+  }, [navOpen])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -281,12 +289,24 @@ function App() {
         aria-label="Primary"
       >
         <a href="#" className="nav-logo">Michael Gikaru</a>
-        <ul className="nav-links">
-          <li><a href="#work">Work</a></li>
-          <li><a href="#capabilities">Capabilities</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#belief">Belief</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <button
+          className="nav-toggle"
+          onClick={(e) => {
+            e.stopPropagation()
+            setNavOpen(!navOpen)
+          }}
+          aria-label="Toggle navigation"
+          aria-expanded={navOpen}
+        >
+          <span className={`nav-toggle-line ${navOpen ? 'open' : ''}`} />
+          <span className={`nav-toggle-line ${navOpen ? 'open' : ''}`} />
+        </button>
+        <ul className={`nav-links ${navOpen ? 'nav-links--open' : ''}`}>
+          <li><a href="#work" onClick={() => setNavOpen(false)}>Work</a></li>
+          <li><a href="#capabilities" onClick={() => setNavOpen(false)}>Capabilities</a></li>
+          <li><a href="#experience" onClick={() => setNavOpen(false)}>Experience</a></li>
+          <li><a href="#belief" onClick={() => setNavOpen(false)}>Belief</a></li>
+          <li><a href="#contact" onClick={() => setNavOpen(false)}>Contact</a></li>
         </ul>
       </nav>
 

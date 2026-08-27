@@ -407,22 +407,31 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   .nav-links {
     display: flex;
-    position: static;
-    flex-direction: row;
-    background: transparent;
-    padding: 0;
-    gap: var(--space-md);
-    transform: none;
-    box-shadow: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 260px;
+    flex-direction: column;
+    background: var(--paper);
+    padding: 100px var(--space-lg) var(--space-lg);
+    gap: var(--space-lg);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+  }
+
+  .nav-links--open {
+    transform: translateX(0);
   }
 
   .nav-links a {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     opacity: 1;
   }
 
   .nav-toggle {
-    display: none;
+    display: flex;
   }
 }
 
