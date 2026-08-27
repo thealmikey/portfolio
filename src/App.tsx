@@ -234,7 +234,6 @@ const experience = [
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -281,22 +280,13 @@ function App() {
         className={`nav ${scrolled ? 'nav--scrolled' : ''}`}
         aria-label="Primary"
       >
-        <a href="#" className="nav-logo">M. Gikaru</a>
-        <button
-          className="nav-toggle"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle navigation"
-          aria-expanded={mobileOpen}
-        >
-          <span className={`nav-toggle-line ${mobileOpen ? 'open' : ''}`} />
-          <span className={`nav-toggle-line ${mobileOpen ? 'open' : ''}`} />
-        </button>
-        <ul className={`nav-links ${mobileOpen ? 'nav-links--open' : ''}`}>
-          <li><a href="#work" onClick={() => setMobileOpen(false)}>Work</a></li>
-          <li><a href="#capabilities" onClick={() => setMobileOpen(false)}>Capabilities</a></li>
-          <li><a href="#experience" onClick={() => setMobileOpen(false)}>Experience</a></li>
-          <li><a href="#belief" onClick={() => setMobileOpen(false)}>Belief</a></li>
-          <li><a href="#contact" onClick={() => setMobileOpen(false)}>Contact</a></li>
+        <a href="#" className="nav-logo">Michael Gikaru</a>
+        <ul className="nav-links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#belief">Belief</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
