@@ -235,6 +235,7 @@ const experience = [
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -246,9 +247,14 @@ function App() {
 
   useEffect(() => {
     if (!navOpen) return
-    const handleClick = () => setNavOpen(false)
-    document.addEventListener('click', handleClick, { once: true })
-    return () => document.removeEventListener('click', handleClick)
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Node
+      if (navRef.current && !navRef.current.contains(target)) {
+        setNavOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [navOpen])
 
   useEffect(() => {
@@ -285,16 +291,14 @@ function App() {
 
       {/* Navigation */}
       <nav
+        ref={navRef}
         className={`nav ${scrolled ? 'nav--scrolled' : ''}`}
         aria-label="Primary"
       >
         <a href="#" className="nav-logo">Michael Gikaru</a>
         <button
           className="nav-toggle"
-          onClick={(e) => {
-            e.stopPropagation()
-            setNavOpen(!navOpen)
-          }}
+          onClick={() => setNavOpen(!navOpen)}
           aria-label="Toggle navigation"
           aria-expanded={navOpen}
         >
@@ -349,7 +353,7 @@ function App() {
         <div className="container">
           <div className="lexicon-header">
             <div>
-              <span className="section-number">02</span>
+              <span className="section-number">01</span>
               <h2>Projects I have worked on</h2>
             </div>
             <span className="meta">Selected projects</span>
@@ -392,7 +396,7 @@ function App() {
         <div className="container">
           <div className="lexicon-header">
             <div>
-              <span className="section-number">01</span>
+              <span className="section-number">02</span>
               <h2>What I do</h2>
             </div>
             <span className="meta">4 domains</span>
